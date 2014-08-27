@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OkClone</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+<% if signed_in? %>
+<nav id="top-nav">
+	<h3><%= current_user.username %></h3>
+	<form action="<%= session_url %>" method="POST">
+		<%= auth_token %>
+		<input type="hidden" name="_method" value="DELETE">
+		<button>SIGN OUT</button>
+	</form>
+</nav>
+
+<nav id="side-nav"></nav>
+<% end %>
+
+<%= yield %>
+
+</body>
+
+</html>
