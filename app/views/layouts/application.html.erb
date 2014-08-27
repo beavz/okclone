@@ -5,23 +5,84 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+
+  <style>
+  nav {
+    background: lightgray;
+  }
+
+  * {
+    font-family: sans-serif;
+/*    border: 1px solid red;*/
+  }
+
+  img {
+    width: 100px;
+    height:100px;
+  }
+
+  body {
+    padding: 25px;
+    width: 920px;
+    margin: auto;
+    min-height: 700px;
+  }
+
+  #top-nav {
+    display:block;
+    width: 900px;
+    height: 75px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  #top-nav > form, #top-nav > h3 {
+    float: left;
+    margin: 10px;
+  }
+  #side-nav {
+    float: left;
+    min-height: 300px;
+    width: 190px;
+    padding: 10px;
+    margin-right: 10px;
+  }
+  main {
+    background: #00CCCC;
+    display:block;
+    float: right;
+    width: 680px;
+    padding: 10px;
+  }
+
+  </style>
 </head>
 
 <body>
 <% if signed_in? %>
 <nav id="top-nav">
 	<h3><%= current_user.username %></h3>
+  <a href="<%= user_url(current_user) %>">PROFILE</a>
+  <h3>SETTINGS</h3>
 	<form action="<%= session_url %>" method="POST">
 		<%= auth_token %>
 		<input type="hidden" name="_method" value="DELETE">
 		<button>SIGN OUT</button>
 	</form>
 </nav>
+<main>
+  <%= yield %>
+</main>
 
-<nav id="side-nav"></nav>
-<% end %>
+<nav id="side-nav">
+  <a href="<%= users_url %>">MATCHES</a>
+  <h3>MESSAGES</h3>
+</nav>
+
+<% else %>
 
 <%= yield %>
+
+<% end %>
 
 </body>
 

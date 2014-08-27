@@ -4,24 +4,24 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6, allow_nil: true }
 
   enum(
-    gender: [ :no_answer, :man, :woman, :other ]
-    orientation: [ :no_answer, :gay, :straight, :bi , :ace ],
-    ethnicity: [ :no_answer, :white, :black, :purple, :latino_a, :asian, :other, :mix ],
-    body_type: [ :no_answer, :fat, :thin, :athletic, :average, :really_fat ],
-    diet: [ :no_answer, :strictly_insects, :vegitarian, :vegan, :paleo, :kosher, :omnivore ],
-    smokes: [ :no_answer, :like_a_chimney, :occasionally, :rarely, :never ],
-    drinks: [ :no_answer, :daily, :frequently, :socially, :rarely, :never],
-    drugs: [ :no_answer, :yes, :absolutely_not, :previously, :yes_but_only_pot ],
-    religion: [ :no_answer, :no_thanks, :atheist, :christian, :muslim, :jewish, :buddhist, :hindu, :other],
-    sign: [ :no_answer, :aries, :taurus, :gemini, :cancer, :leo, :virgo, :libra, :scorpio, :sagittarius, :capricorn, :aquarius, :pisces],
-    education: [ :no_answer, :none, :grade_school, :some_high_school, :high_school, :associates_degree, :bachelors_degree, :some_post_graduate_work, :masters_degree, :doctorate],
-    job: [ :no_answer, :science, :other],
-    income: [ :no_answer, :some_money, :no_money],
-    relationship_status: [ :no_answer, :single, :available, :not_available],
-    relationship_type: [ :no_answer, :strictly_monogamous, :mostly_monogamous, :strictly_non_monogamous, :mostly_non_monogamous],
-    offspring: [ :no_answer, :none_do_not_want, :none_want, :have_kids],
-    pets: [ :no_answer, :none_do_not_want, :none_want, :have_cat, :have_dog, :have_various],
-    looking_for_status: [ :no_answer, :only_single, :available, :any ]
+    gender: [ :man, :woman, :other_gender ],
+    orientation: [ :gay, :straight, :bi , :ace ],
+    ethnicity: [ :white, :black, :purple, :latino_a, :asian, :other, :mix ],
+    body_type: [ :fat, :thin, :athletic, :avg, :really_fat ],
+    diet: [ :strictly_insects, :vegitarian, :vegan, :paleo, :kosher, :omnivore ],
+    smokes: [ :like_a_chimney, :occasionally, :rarely_smokes, :never_smokes ],
+    drinks: [ :daily, :frequently, :socially, :rarely, :never],
+    drugs: [ :yes, :absolutely_not, :previously, :yes_but_only_pot ],
+    religion: [ :no_thanks, :atheist, :christian, :muslim, :jewish, :buddhist, :hindu, :other_religion],
+    sign: [ :aries, :taurus, :gemini, :cancer, :leo, :virgo, :libra, :scorpio, :sagittarius, :capricorn, :aquarius, :pisces],
+    education: [ :no_school, :grade_school, :some_high_school, :high_school, :associates_degree, :bachelors_degree, :some_post_graduate_work, :masters_degree, :doctorate],
+    job: [ :science, :something_else],
+    income: [ :some_money, :no_money],
+    relationship_status: [ :single, :available, :not_available],
+    relationship_type: [ :strictly_monogamous, :mostly_monogamous, :strictly_non_monogamous, :mostly_non_monogamous],
+    offspring: [ :none_do_not_want_kids, :none_want_kids, :have_kids],
+    pets: [ :none_do_not_want, :none_want, :have_cat, :have_dog, :have_various],
+    looking_for_status: [ :only_single, :all_available, :any ]
   )
 
   after_initialize :ensure_session_token

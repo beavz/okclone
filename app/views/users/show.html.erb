@@ -1,0 +1,122 @@
+<header>
+  <img src="http://cityyearnh.files.wordpress.com/2011/02/boat.jpg" id="profile-pic">
+  <h3 id="basic-info"><%= basic_info(@user) %><h3>
+</header>
+<content>
+  <nav id="tabs">
+    <a href="">INFO</a>
+    <a href="">PHOTOS</a>
+    <a href="">QUESTIONS</a>
+  </nav>
+
+  <section id="info">
+    <section id="essays">
+      <%= essays(@user) %>
+    </section>
+
+    <section id="details">
+      <table>
+        <tr>
+          <td>Gender</td>
+          <td><%= @user.gender %></td>
+        </tr>
+        <tr>
+          <td>Orientation</td>
+          <td><%= @user.orientation %></td>
+        </tr>
+        <tr>
+          <td>Ethnicity</td>
+          <td><%= @user.ethnicity %></td>
+        </tr>
+        <tr>
+          <td>Height</td>
+          <td><%= @user.height %></td>
+        </tr>
+        <tr>
+          <td>Body type</td>
+          <td><%= @user.body_type %></td>
+        </tr>
+        <tr>
+          <td>Diet</td>
+          <td><%= @user.diet %></td>
+        </tr>
+        <tr>
+          <td>Smokes</td>
+          <td><%= @user.smokes %></td>
+        </tr>
+
+        <tr>
+          <td>Drinks</td>
+          <td><%= @user.drinks %></td>
+        </tr>
+        <tr>
+          <td>Drugs</td>
+          <td><%= @user.drugs %></td>
+        </tr>
+        <tr>
+          <td>Religion</td>
+          <td><%= @user.religion %></td>
+        </tr>
+        <tr>
+          <td>Sign</td>
+          <td><%= @user.sign %></td>
+        </tr>
+        <tr>
+          <td>Education</td>
+          <td><%= @user.education %></td>
+        </tr>
+        <tr>
+          <td>Job</td>
+          <td><%= @user.job %></td>
+        </tr>
+        <tr>
+          <td>Income</td>
+          <td><%= @user.income %></td>
+        </tr>
+        <tr>
+          <td>Relationship status</td>
+          <td><%= @user.relationship_status %></td>
+        </tr>
+        <tr>
+          <td>Relationship type</td>
+          <td><%= @user.relationship_type %></td>
+        </tr>
+        <tr>
+          <td>Offspring</td>
+          <td><%= @user.offspring %></td>
+        </tr>
+        <tr>
+          <td>Pets</td>
+          <td><%= @user.pets %></td>
+        </tr>
+        <tr>
+          <td>Looking for:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Age</td>
+          <td><%= @user.min_age %> - <%= @user.max_age %></td>
+        </tr>
+        <tr>
+          <td>Status</td>
+          <td><%= @user.looking_for_status %></td>
+        </tr>
+        <tr>
+          <td>Gender</td>
+          <td>placeholder</td>
+        </tr>
+        <tr>
+          <td>Interaction</td>
+          <td>placeholder</td>
+        </tr>
+      </table>
+    </section>
+  </section>
+
+  <section id="photos">
+  </section>
+
+  <section id="questions">
+    <%= questions(@user.responses) %>
+  </section>
+</content>

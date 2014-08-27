@@ -1,0 +1,42 @@
+<h4 id="error-notice"><%= flash[:now] %></h4>
+
+<h2>About you:</h2>
+<form action="<%= users_url %>" method="POST">
+  <%= auth_token %>
+  <label>username:
+    <input
+      type="text"
+      value="<%= @user.username %>"
+      name="user[username]">
+  </label>
+
+  <label>email:
+    <input
+      type="text"
+      value="<%= @user.email %>"
+      name="user[email]">
+  </label>
+
+  <label>password:
+    <input
+      type="password"
+      name="user[password]">
+  </label>
+
+  <label>age:
+    <input
+      type="text"
+      value="<%= @user.age %>"
+      name="user[age]">
+  </label>
+
+  <label>location: (please enter zip code)
+    <input
+      type="text"
+      value="<%= @user.zip_code %>"
+      name="user[zip_code]">
+  </label>
+
+  <button>SIGN UP</button>
+
+</form>

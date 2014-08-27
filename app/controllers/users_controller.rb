@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
-
-    if @user = current_user
-      render :show_self
-    else
-      render :show
+    if require_sign_in
+      @user = User.find(params[:id])
+      if @user == current_user
+        render :show_self
+      else
+        render :show
+      end
     end
   end
 
@@ -28,19 +29,23 @@ class UsersController < ApplicationController
   end
 
   def index
-    @user = User.all #change this to current_user.close_users later
+    if require_sign_in
+      @users = User.all #change this to current_user.close_users later
 
-    render :index
+      render :index
+    end
   end
 
   def update
-    @user = current_user
+    if require_sign_in
+      @user = current_user
 
-    unless @user.update(user_params)
-      flash[:now] = @user.errors.full_messages
+      unless @user.update(user_params)
+        flash[:now] = @user.errors.full_messages
+      end
+
+      render :show_self
     end
-
-    render :show_self
   end
 
   private
