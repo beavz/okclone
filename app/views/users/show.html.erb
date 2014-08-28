@@ -1,6 +1,7 @@
 <header>
   <img src="http://cityyearnh.files.wordpress.com/2011/02/boat.jpg" id="profile-pic">
   <h3 id="basic-info"><%= basic_info(@user) %><h3>
+  <a href="">SEND MESSAGE</a>
 </header>
 <content>
   <nav id="tabs">
@@ -11,7 +12,7 @@
 
   <section id="info">
     <section id="essays">
-      <%= essays(@user) %>
+      <%= essays(@user, false) %>
     </section>
 
     <section id="details">
@@ -117,6 +118,8 @@
   </section>
 
   <section id="questions">
-    <%= questions(@user.responses) %>
+    <% @user.responses.each do |response| %>
+      <%= render "show_response", response: response %>
+    <% end %>
   </section>
 </content>

@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 20140826154127) do
   add_index "questions", ["category"], name: "index_questions_on_category", using: :btree
 
   create_table "responses", force: true do |t|
-    t.integer  "question_id", null: false
     t.integer  "user_id",     null: false
     t.integer  "answer_id",   null: false
     t.text     "explanation"
@@ -58,50 +57,50 @@ ActiveRecord::Schema.define(version: 20140826154127) do
     t.datetime "updated_at"
   end
 
-  add_index "responses", ["user_id", "question_id"], name: "index_responses_on_user_id_and_question_id", unique: true, using: :btree
+  add_index "responses", ["user_id"], name: "index_responses_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "session_token",            null: false
-    t.string   "password_digest",          null: false
-    t.string   "username",                 null: false
-    t.string   "email",                    null: false
+    t.string   "session_token",                         null: false
+    t.string   "password_digest",                       null: false
+    t.string   "username",                              null: false
+    t.string   "email",                                 null: false
     t.integer  "age"
     t.integer  "zip_code"
     t.integer  "gender"
-    t.integer  "orientation"
-    t.integer  "ethnicity"
+    t.integer  "orientation",              default: 0
+    t.integer  "ethnicity",                default: 0
     t.integer  "height"
-    t.integer  "body_type"
-    t.integer  "diet"
-    t.integer  "smokes"
-    t.integer  "drinks"
-    t.integer  "drugs"
-    t.integer  "religion"
-    t.integer  "sign"
-    t.integer  "education"
-    t.integer  "job"
-    t.integer  "income"
-    t.integer  "relationship_status"
-    t.integer  "relationship_type"
-    t.integer  "offspring"
-    t.integer  "pets"
+    t.integer  "body_type",                default: 0
+    t.integer  "diet",                     default: 0
+    t.integer  "smokes",                   default: 0
+    t.integer  "drinks",                   default: 0
+    t.integer  "drugs",                    default: 0
+    t.integer  "religion",                 default: 0
+    t.integer  "sign",                     default: 0
+    t.integer  "education",                default: 0
+    t.integer  "job",                      default: 0
+    t.integer  "income",                   default: 0
+    t.integer  "relationship_status",      default: 0
+    t.integer  "relationship_type",        default: 0
+    t.integer  "offspring",                default: 0
+    t.integer  "pets",                     default: 0
     t.integer  "min_age"
     t.integer  "max_age"
-    t.integer  "looking_for_status"
+    t.integer  "looking_for_status",       default: 0
     t.boolean  "is_looking_for_men"
     t.boolean  "is_looking_for_women"
     t.boolean  "is_looking_for_friends"
     t.boolean  "is_looking_for_ltdating"
     t.boolean  "is_looking_for_stdating"
     t.boolean  "is_looking_for_sexitimes"
-    t.text     "essay1"
-    t.text     "essay2"
-    t.text     "essay3"
-    t.text     "essay4"
-    t.text     "essay5"
-    t.text     "essay6"
-    t.text     "essay7"
-    t.text     "essay8"
+    t.text     "essay1",                   default: ""
+    t.text     "essay2",                   default: ""
+    t.text     "essay3",                   default: ""
+    t.text     "essay4",                   default: ""
+    t.text     "essay5",                   default: ""
+    t.text     "essay6",                   default: ""
+    t.text     "essay7",                   default: ""
+    t.text     "essay8",                   default: ""
     t.datetime "created_at"
     t.datetime "updated_at"
   end

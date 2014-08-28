@@ -11,7 +11,7 @@ module UsersHelper
     return res
   end
 
-  def essays(user)
+  def essays(user, can_edit)
     res = ""
     current_essays = [
       "essay1", "essay2", "essay3", "essay4",
@@ -19,45 +19,41 @@ module UsersHelper
     ]
 
     current_essays.each do |essay_key|
-      if essay(user, essay_key)
-        res += essay(user, essay_key)
+      if essay(user, essay_key, can_edit)
+        res += essay(user, essay_key, can_edit)
       end
     end
 
     res.html_safe
   end
 
-  def questions(responses)
-    res = ""
-    responses.each do |response|
-      res += q_and_a(response)
-    end
-
-    res.html_safe
-  end
 
   private
 
-  def essay(user, essay_key)
-    if user.send(essay_key.to_sym)
+  def essay(user, essay_key, can_edit)
+    if can_edit
       return <<-HTML.html_safe
-        <article id="#{ essay_key }">
-          <h5>#{ t(essay_key) }</h5>
-          <p> #{ h(user.send(essay_key.to_sym)) } </p>
-        </article>
+        <label>#{ t(essay_key) }</label>
+        <br>
+        <textarea name="user[#{ essay_key }]">
+          #{ h(user.send(essay_key.to_sym)) }
+        </textarea>
+        <br>
       HTML
+
     else
-      return nil
+      if user.send(essay_key.to_sym)
+        return <<-HTML.html_safe
+          <article id="#{ essay_key }">
+            <h5>#{ t(essay_key) }</h5>
+            <p> #{ h(user.send(essay_key.to_sym)) } </p>
+          </article>
+        HTML
+      else
+        return nil
+      end
     end
   end
 
-  def q_and_a(response)
-    return <<-HTML.html_safe
-      <article>
-        <h5>#{ response.question.text }</h5>
-        <p> #{ response.answer.text } </p>
-        <p> #{ h(response.explanation) } </p>
-      </article>
-    HTML
-  end
+
 end

@@ -1,0 +1,29 @@
+<article>
+  <form>
+    <h5><%= response.question.text %></h5>
+
+      <% response.question.answers.each do |answer| %>
+        <label><%= answer.text %>
+          <input
+            type="radio"
+            name="response[answer_id]"
+            value="<%= answer.id %>"
+            <%= answer.id == response.answer_id ? "selected" : "" %> >
+        </label>
+        <br>
+      <% end %>
+      <label> explain:
+        <textarea name="response[explanation]">
+           <%= response.explanation  %>
+        </textarea>
+      </label>
+
+    <input type="submit" value="SAVE CHANGES">
+  </form>
+</article>
+
+
+
+
+
+

@@ -11,6 +11,12 @@
 
   <section id="info">
     <section id="essays">
+      <form action="<%= user_url(@user) %>" method="POST">
+        <input type="hidden" name="_method" value="PATCH">
+        <%= auth_token %>
+        <%= essays(@user, true) %>
+        <input type="submit" value="SAVE CHANGES">
+      </form>
     </section>
 
     <section id="details">
@@ -232,9 +238,13 @@
   </section>
 
   <section id="questions">
-    <%= questions(@user.responses) %>
+    <% @user.responses.each do |response| %>
+      <%= render "edit_response", response: response %>
+    <% end %>
   </section>
 </content>
+
+
 
 
       <!--
