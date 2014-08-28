@@ -1,0 +1,17 @@
+<form action="<%= user_url(@user) %>" method="POST">
+  <input type="hidden" name="_method" value="PATCH">
+  <%= auth_token %>
+
+  <% current_essays.each do |essay_key| %>
+    <h5><%= t( essay_key ) %></h5>
+    <textarea name="user[<%= t( essay_key ) %>]">
+      <%= user.send( essay_key.to_sym ) %>
+    </textarea>
+    <br>
+  <% end %>
+
+  <input type="submit" value="SAVE CHANGES">
+</form>
+
+
+

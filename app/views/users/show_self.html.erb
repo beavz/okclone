@@ -11,12 +11,7 @@
 
   <section id="info">
     <section id="essays">
-      <form action="<%= user_url(@user) %>" method="POST">
-        <input type="hidden" name="_method" value="PATCH">
-        <%= auth_token %>
-        <%= essays(@user, true) %>
-        <input type="submit" value="SAVE CHANGES">
-      </form>
+      <%= render "essays_form", user: @user %>
     </section>
 
     <section id="details">
@@ -29,7 +24,8 @@
           <td>
             <select name="user[gender]">
               <% User.genders.each do |key, value| %>
-                <option value="<%= key %>" selected><%= key %></option>
+                <% selected = @user.gender == key ? 'selected="true"' : ""  %>
+                <option value="<%= key %>" <%= selected %>><%= t( key ) %></option>
               <% end %>
             </select>
           </td>
@@ -39,7 +35,8 @@
           <td>
             <select name="user[orientation]">
               <% User.orientations.each do |key, value| %>
-                <option value="<%= key %>" selected><%= key %></option>
+                <% selected = @user.orientation == key ? 'selected="true"' : ""  %>
+                <option value="<%= key %>" <%= selected %>><%= t( key ) %></option>
               <% end %>
             </select>
           </td>
@@ -49,7 +46,8 @@
           <td>
             <select name="user[ethnicity]">
               <% User.ethnicities.each do |key, value| %>
-                <option value="<%= key %>" selected><%= key %></option>
+              <% selected = @user.ethnicity == key ? 'selected="true"' : ""  %>
+                <option value="<%= key %>" <%= selected %>><%= t( key ) %></option>
               <% end %>
             </select>
           </td>
@@ -63,7 +61,8 @@
           <td>
             <select name="user[body_type]">
               <% User.body_types.each do |key, value| %>
-                <option value="<%= key %>" selected><%= key %></option>
+              <% selected = @user.body_type == key ? 'selected="true"' : ""  %>
+                <option value="<%= key %>" <%= selected %>><%= t( key ) %></option>
               <% end %>
             </select>
           </td>
@@ -73,7 +72,8 @@
           <td>
             <select name="user[diet]">
               <% User.diets.each do |key, value| %>
-                <option value="<%= key %>" selected><%= key %></option>
+              <% selected = @user.diet == key ? 'selected="true"' : ""  %>
+                <option value="<%= key %>" <%= selected %>><%= t( key ) %></option>
               <% end %>
             </select>
           </td>
@@ -83,7 +83,8 @@
           <td>
             <select name="user[smokes]">
               <% User.smokes.each do |key, value| %>
-                <option value="<%= key %>" selected><%= key %></option>
+              <% selected = @user.smokes == key ? 'selected="true"' : ""  %>
+                <option value="<%= key %>" <%= selected %>><%= t( key ) %></option>
               <% end %>
             </select>
           </td>
@@ -94,7 +95,8 @@
           <td>
             <select name="user[drinks]">
               <% User.drinks.each do |key, value| %>
-                <option value="<%= key %>" selected><%= key %></option>
+              <% selected = @user.drinks == key ? 'selected="true"' : ""  %>
+                <option value="<%= key %>" <%= selected %>><%= t( key ) %></option>
               <% end %>
             </select>
           </td>
@@ -104,7 +106,8 @@
           <td>
             <select name="user[drugs]">
               <% User.drugs.each do |key, value| %>
-                <option value="<%= key %>" selected><%= key %></option>
+              <% selected = @user.drugs == key ? 'selected="true"' : ""  %>
+                <option value="<%= key %>" <%= selected %>><%= t( key ) %></option>
               <% end %>
             </select>
           </td>
@@ -114,7 +117,8 @@
           <td>
             <select name="user[religion]">
               <% User.religions.each do |key, value| %>
-                <option value="<%= key %>" selected><%= key %></option>
+              <% selected = @user.religion == key ? 'selected="true"' : ""  %>
+                <option value="<%= key %>" <%= selected %>><%= t( key ) %></option>
               <% end %>
             </select>
           </td>
@@ -124,7 +128,8 @@
           <td>
             <select name="user[sign]">
               <% User.signs.each do |key, value| %>
-                <option value="<%= key %>" selected><%= key %></option>
+              <% selected = @user.sign == key ? 'selected="true"' : ""  %>
+                <option value="<%= key %>" <%= selected %>><%= t( key ) %></option>
               <% end %>
             </select>
           </td>
@@ -134,7 +139,8 @@
           <td>
             <select name="user[education]">
               <% User.educations.each do |key, value| %>
-                <option value="<%= key %>" selected><%= key %></option>
+              <% selected = @user.education == key ? 'selected="true"' : ""  %>
+                <option value="<%= key %>" <%= selected %>><%= t( key ) %></option>
               <% end %>
             </select>
           </td>
@@ -144,7 +150,8 @@
           <td>
             <select name="user[job]">
               <% User.jobs.each do |key, value| %>
-                <option value="<%= key %>" selected><%= key %></option>
+              <% selected = @user.job == key ? 'selected="true"' : ""  %>
+                <option value="<%= key %>" <%= selected %>><%= t( key ) %></option>
               <% end %>
             </select>
           </td>
@@ -154,7 +161,8 @@
           <td>
             <select name="user[income]">
               <% User.incomes.each do |key, value| %>
-                <option value="<%= key %>" selected><%= key %></option>
+                <% selected = @user.income == key ? 'selected="true"' : ""  %>
+                <option value="<%= key %>" <%= selected %>><%= t( key ) %></option>
               <% end %>
             </select>
           </td>
@@ -164,7 +172,8 @@
           <td>
             <select name="user[relationship_status]">
               <% User.relationship_statuses.each do |key, value| %>
-                <option value="<%= key %>" selected><%= key %></option>
+              <% selected = @user.relationship_status == key ? 'selected="true"' : ""  %>
+                <option value="<%= key %>" <%= selected %>><%= t( key ) %></option>
               <% end %>
             </select>
           </td>
@@ -174,17 +183,19 @@
           <td>
             <select name="user[relationship_type]">
               <% User.relationship_types.each do |key, value| %>
-                <option value="<%= key %>" selected><%= key %></option>
+              <% selected = @user.relationship_type == key ? 'selected="true"' : ""  %>
+                <option value="<%= key %>" <%= selected %>><%= t( key ) %></option>
               <% end %>
             </select>
           </td>
         </tr>
         <tr>
-          <td>Offspring</td>
+          <td>Children</td>
           <td>
             <select name="user[offspring]">
               <% User.offsprings.each do |key, value| %>
-                <option value="<%= key %>" selected><%= key %></option>
+              <% selected = @user.offspring == key ? 'selected="true"' : ""  %>
+                <option value="<%= key %>" <%= selected %>><%= t( key ) %></option>
               <% end %>
             </select>
           </td>
@@ -194,7 +205,8 @@
           <td>
             <select name="user[pets]">
               <% User.pets.each do |key, value| %>
-                <option value="<%= key %>" selected><%= key %></option>
+              <% selected = @user.pets == key ? 'selected="true"' : ""  %>
+                <option value="<%= key %>" <%= selected %>><%= t( key ) %></option>
               <% end %>
             </select>
           </td>
@@ -215,7 +227,8 @@
           <td>
             <select name="user[looking_for_status]">
               <% User.looking_for_statuses.each do |key, value| %>
-                <option value="<%= key %>" selected><%= key %></option>
+              <% selected = @user.looking_for_status == key ? 'selected="true"' : ""  %>
+                <option value="<%= key %>" <%= selected %>><%= t( key ) %></option>
               <% end %>
             </select>
           </td>
@@ -239,7 +252,7 @@
 
   <section id="questions">
     <% @user.responses.each do |response| %>
-      <%= render "edit_response", response: response %>
+      <%= render "responses/edit_response", response: response %>
     <% end %>
   </section>
 </content>

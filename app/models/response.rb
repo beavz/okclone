@@ -6,9 +6,12 @@ class Response < ActiveRecord::Base
   has_one :question, through: :answer, source: :question, dependent: :destroy
 
   def one_response_per_user_per_question
-    answered_q_ids = User.find(user_id).answered_questions.pluck("id")
-    if answered_q_ids.include?(Answer.find(answer_id).question.id)
-      errors.add( "May only save one response per user per question.")
+    conflicting_responses = self.question.responses
+          .where("responses.user_id = ?", self.user_id)
+          .where( "(:id IS NULL) OR (responses.id != :id)", id: self.id)
+
+    unless conflicting_responses.empty?
+      errors[:base] << "one response per user per question"
     end
   end
 end

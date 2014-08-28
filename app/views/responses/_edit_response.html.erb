@@ -1,5 +1,8 @@
 <article>
-  <form>
+  <form action="<%= response_url(response) %>" method="POST">
+    <input type="hidden" name="_method" value="PATCH">
+    <%= auth_token %>
+
     <h5><%= response.question.text %></h5>
 
       <% response.question.answers.each do |answer| %>
@@ -8,7 +11,7 @@
             type="radio"
             name="response[answer_id]"
             value="<%= answer.id %>"
-            <%= answer.id == response.answer_id ? "selected" : "" %> >
+            <%= answer.id == response.answer_id ? "checked" : "" %> >
         </label>
         <br>
       <% end %>
