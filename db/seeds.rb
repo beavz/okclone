@@ -37,6 +37,7 @@ Answer.create!([
   {question_id: 7, text: "Yes, it means 'where'."},
   {question_id: 7, text: "Yes, it means 'why'."}
 ])
+
 Response.create!([
   {user_id: 1, answer_id: 1, explanation: "more words"},
   {user_id: 1, answer_id: 5, explanation: "saoodfjasdoifasdf"},
