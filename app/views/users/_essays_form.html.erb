@@ -4,7 +4,7 @@
 
   <% current_essays.each do |essay_key| %>
     <h5><%= t( essay_key ) %></h5>
-    <textarea name="user[<%= t( essay_key ) %>]">
+    <textarea name="user[<%= essay_key %>]">
       <%= user.send( essay_key.to_sym ) %>
     </textarea>
     <br>
