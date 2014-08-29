@@ -1,1 +1,14 @@
 <%= render "new_response", response: @response, question: @question %>
+<p>^^^ RAILS</p>
+
+<p>backbone:</p>
+
+<div></div>
+<script>
+  $(function () {
+    var view = new OKC.Views.NewResponse({
+
+    })
+    $("div").html(view.render().$el)
+  })
+</script>

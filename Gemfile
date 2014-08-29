@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'bcrypt'
+gem 'ejs'
+gem 'backbone-on-rails'
 
 group :development do
   gem 'better_errors'
