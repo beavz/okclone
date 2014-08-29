@@ -1,3 +1,37 @@
+<style>
+  #tabs {
+    background: transparent;
+  }
+
+  #info, #questions {
+    border: 1px solid lightgray;
+    padding: 20px;
+    margin: 20px 0px;
+  }
+  #essays {
+    margin-bottom: 10px;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 10px;
+  }
+  input[type="submit"] {
+    padding: 2px;
+    font-weight: bold;
+
+  }
+  #more {
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+ #basic-info {
+      color: #6666CC;
+      font-weight: bold;
+      font-size: 20px;
+
+  }
+</style>
+
+
 <header>
   <img src="http://cityyearnh.files.wordpress.com/2011/02/boat.jpg" id="profile-pic">
   <h3 id="basic-info"><%= basic_info(@user) %><h3>

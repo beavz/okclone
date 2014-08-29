@@ -4,7 +4,6 @@ window.OKC = {
   Views: {},
   Routers: {},
   initialize: function () {
-
   }
 }
 

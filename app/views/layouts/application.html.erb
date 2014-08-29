@@ -7,6 +7,30 @@
   <%= csrf_meta_tags %>
 
   <style>
+  a, h1, h2, h3, h4, h5, p, input, button {
+    text-decoration: none;
+    color: inherit;
+    border: 0;
+    padding: 0;
+    font-size: 14px;
+    font-weight: normal;
+    background: transparent;
+    style: block;
+  }
+
+  textarea {
+    border: none;
+    width: 400px;
+  }
+
+  h1 {
+    color: #6666CC;
+    font-weight: bold;
+    font-size: 20px;
+    float: right;
+    padding-right: 50px;
+  }
+
   nav {
     background: lightgray;
   }
@@ -23,35 +47,35 @@
 
   body {
     padding: 25px;
-    width: 920px;
+    width: 1000px;
     margin: auto;
     min-height: 700px;
   }
 
   #top-nav {
     display:block;
-    width: 900px;
-    height: 75px;
+    width: 980px;
+    height: 50px;
     padding: 10px;
     margin-bottom: 10px;
   }
-  #top-nav > form, #top-nav > h3 {
+  #top-nav > form, #top-nav > h3, #top-nav > a {
     float: left;
     margin: 10px;
   }
   #side-nav {
     float: left;
-    min-height: 300px;
-    width: 190px;
+    height: 600px;
+    width: 100px;
     padding: 10px;
     margin-right: 10px;
   }
   main {
-    background: #00CCCC;
+    background: transparent;
     display:block;
     float: right;
-    width: 680px;
-    padding: 10px;
+    width: 830px;
+    padding: 20px;
   }
 
   </style>
@@ -60,6 +84,8 @@
 <body>
 <% if signed_in? %>
 <nav id="top-nav">
+  <h1>OKCLONE</h1>
+
 	<h3><%= current_user.username %></h3>
   <a href="<%= user_url(current_user) %>">PROFILE</a>
   <h3>SETTINGS</h3>
@@ -67,6 +93,7 @@
 		<%= auth_token %>
 		<input type="hidden" name="_method" value="DELETE">
 		<button>SIGN OUT</button>
+
 	</form>
 </nav>
 <main>

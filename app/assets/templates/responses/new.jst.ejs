@@ -1,0 +1,22 @@
+<article>
+  <form action="/responses" method="POST">
+
+    <h5><%= question.text %></h5>
+
+      <% for (var i = 0; i < answers.length; i++ %>
+        <label><%= answer[i].text %>
+          <input
+            type="radio"
+            name="response[answer_id]"
+            value="<%= answer[i].id %>" >
+        </label>
+        <br>
+      <% end %>
+      <label> explain:
+        <textarea name="response[explanation]">
+        </textarea>
+      </label>
+
+    <input type="submit" value="SAVE">
+  </form>
+</article>

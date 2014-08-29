@@ -1,6 +1,28 @@
-<h4 id="error-notice"><%= flash[:now] %></h4>
+<style>
+button, a {
+  font-weight: bold;
+  font-size: 16px;
+}
+h1 {
+  color: #6666CC;
+  font-weight: bold;
+  font-size: 20px;
+  float: right;
+}
+
+h2 {
+  font-weight: bold;
+}
+body {
+  width: 600px;
+}
+</style>
+<h1>OKCLONE</h1>
+
+<!--<h4 id="error-notice"><%#= flash[:now] %></h4>-->
 
 <h2>About you:</h2>
+<br>
 <form action="<%= users_url %>" method="POST">
   <%= auth_token %>
   <label>username:
@@ -9,34 +31,34 @@
       value="<%= @user.username %>"
       name="user[username]">
   </label>
-
+ <br>
   <label>email:
     <input
       type="text"
       value="<%= @user.email %>"
       name="user[email]">
   </label>
-
+ <br>
   <label>password:
     <input
       type="password"
       name="user[password]">
   </label>
-
+ <br>
   <label>age:
     <input
       type="text"
       value="<%= @user.age %>"
       name="user[age]">
   </label>
-
+ <br>
   <label>location: (please enter zip code)
     <input
       type="text"
       value="<%= @user.zip_code %>"
       name="user[zip_code]">
   </label>
-
+ <hr>
   <button>SIGN UP</button>
 
 </form>
