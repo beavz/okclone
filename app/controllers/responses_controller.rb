@@ -2,7 +2,14 @@ class ResponsesController < ApplicationController
   before_filter :require_sign_in
 
   def new
-    @question = question ? question : Question.find_unanswered(current_user)
+    @question = Question.find_unanswered(current_user)
+    if @question
+      @response = @question.responses.new(user_id: current_user.id)
+      render :new
+    else
+      flash[:notice] = "You've answered all of the questions"
+      redirect_to user_url(current_user)
+    end
   end
 
   def create ## add logic for a skip

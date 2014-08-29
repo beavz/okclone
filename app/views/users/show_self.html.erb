@@ -90,37 +90,8 @@
     <% @user.responses.each do |response| %>
       <%= render "responses/edit_response", response: response %>
     <% end %>
+
+    <a href="<%= new_response_url %>">ANSWER MORE QUESTIONS!</a>
   </section>
 </content>
 
-
-
-
-      <!--
-      t.integer :gender
-      t.integer :orientation,       default: 0
-      t.integer :ethnicity,         default: 0
-      t.integer :height
-      t.integer :body_type,         default: 0
-      t.integer :diet,              default: 0
-      t.integer :smokes,            default: 0
-      t.integer :drinks,            default: 0
-      t.integer :drugs,             default: 0
-      t.integer :religion,          default: 0
-      t.integer :sign,              default: 0
-      t.integer :education,         default: 0
-      t.integer :job,               default: 0
-      t.integer :income,            default: 0
-      t.integer :relationship_status, default: 0
-      t.integer :relationship_type, default: 0
-      t.integer :offspring,         default: 0
-      t.integer :pets,              default: 0
-      t.integer :min_age
-      t.integer :max_age
-      t.integer :looking_for_status, default: 0
-      t.boolean :is_looking_for_men
-      t.boolean :is_looking_for_women
-      t.boolean :is_looking_for_friends
-      t.boolean :is_looking_for_ltdating
-      t.boolean :is_looking_for_stdating
-      t.boolean :is_looking_for_sexitimes -->
