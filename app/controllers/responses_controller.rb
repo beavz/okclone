@@ -2,7 +2,7 @@ class ResponsesController < ApplicationController
   before_filter :require_sign_in
 
   def new
-    @question = Question.find_unanswered(current_user)
+    @question = Question.find_unanswered(current_user).first
     if @question
       @response = @question.responses.new(user_id: current_user.id)
       render :new

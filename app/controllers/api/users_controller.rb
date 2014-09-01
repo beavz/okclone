@@ -1,15 +1,20 @@
 module Api
-    class Api::UsersController < ApiController
+  class Api::UsersController < ApiController
+      
     def show
-        @user = User.find(params[:id])
-
-        render json: { user: @user, current_user: current_user }
+      @user = User.find(params[:id])
+      if @user == current_user
+        @questions = Question.find_unanswered(current_user)
+      end
+      
+      render "show"
     end
 
     def index
-        @users = User.all #change this to current_user.matched_users later
+        @users = User.all.where(["users.id != ?", current_user.id])
+        #change this to current_user.matched_users later??
 
-        render json: @users
+        render "index"
     end
 
     def update
@@ -19,7 +24,7 @@ module Api
           flash[:now] = @user.errors.full_messages
         end
 
-        render json: { user: @user, current_user: current_user }
+        render json: { user: @user }
     end
 
     private

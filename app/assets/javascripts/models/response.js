@@ -1,5 +1,3 @@
 OKC.Models.Response = Backbone.Model.extend({
-  this.user = options.user;
-  this.answer = options.answer;
-  
+  //how do I set this to have a question with answers? << like a nested collection but just a model
 })
