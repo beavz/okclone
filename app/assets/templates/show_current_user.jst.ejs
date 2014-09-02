@@ -6,28 +6,21 @@
 </header>
 
 <content>
-  <nav id="tabs">
-    <a href="">INFO</a>
-    <a href="">PHOTOS</a>
-    <a href="">QUESTIONS</a>
+  <nav class="tabs">
+    <a data-id=".info" href="">INFO</a>
+    <a data-id=".photos" href="">PHOTOS</a>
+    <a data-id=".questions" href="">QUESTIONS</a>
   </nav>
 
-  <section id="info">
-    <section id="essays">
-      <%= this.partial({url: 'templates/essay_form.ejs'}) %>
-    </section>
+  <section class="info">
 
-    <section id="details">
-     <%= this.partial({url: 'templates/essay_form.ejs'}) %>
-    </section>
   </section>
 
-  <section id="photos">
-    <%= this.partial({url: 'templates/essay_form.ejs'}) %>
+  <section class="photos">
   </section>
 
-  <section id="questions">
-    <%= this.partial({url: 'templates/essay_form.ejs'}) %>
+  <section class="questions">
   </section>
+
 </content>
 

@@ -1,14 +1,14 @@
 OKC.Routers.Main = Backbone.Router.extend({
-  initialize: {
+  initialize: function (options) {
     this.$rootEl = options.$rootEl;
   },
-  
+
   routes: {
-    "#/user/:id": "show"
+    "users/:id": "show"
   },
-  
+
   show: function (id) {
-    if (id === OKC.current_user.id) {
+    if (id == OKC.current_user.id) {
       OKC.current_user.fetch();
       var view = new OKC.Views.ShowCurrentUser({
         model: OKC.current_user
@@ -21,9 +21,9 @@ OKC.Routers.Main = Backbone.Router.extend({
         model: user
       });
       this._swapView(view);
-    } 
+    }
   },
-  
+
   _swapView: function (view) {
     this._currentView && this._currentView.remove();
     this._currentView = view;

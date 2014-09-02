@@ -1,0 +1,29 @@
+<p>JUST TESTING: INFO</p>
+
+<!--<section id="essays">
+  <% for (var i = 1; i < 9; i++) {} %>
+</section>
+
+<section id="details">
+  details
+</section>
+
+
+
+<% _.each(user.get("current_essays") do |essay| %>
+<div class ="show-essay">
+<form class="edit-essay" action="<%= user_url(@user) %>" method="POST">
+<input type="hidden" name="_method" value="PATCH">
+<%= auth_token %>
+<h5><%= essay.text %></h5>
+<textarea name="user[<%= essay.key %>]">
+<%= user.escape("essay.key") %>
+</textarea>
+<br>
+<input type="submit" value="SAVE">
+</form>
+<% end %> -->
+
+
+
+
