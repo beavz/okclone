@@ -14,13 +14,23 @@ module Api
     end
 
     def index
-        @users = User.all.where(["users.id != ?", current_user.id])
-        #change this to current_user.matched_users later??
+      @users = User.all.where(["users.id != ?", current_user.id])
+      #change this to current_user.matched_users later??
 
-        render "index"
+      render "index"
     end
 
     def update
+      @user = current_user
+      @user.update(user_params)
+
+      render "show"
+    end
+
+    private
+
+    def user_params
+      params.require(:user).permit! ### NOT SAFE COME BACK HERE SOON
     end
   end
 end
