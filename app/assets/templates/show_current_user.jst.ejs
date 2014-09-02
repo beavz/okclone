@@ -1,0 +1,33 @@
+<header>
+  <img src="http://cityyearnh.files.wordpress.com/2011/02/boat.jpg" id="profile-pic">
+  <h3 id="basic-info">
+    <%= user.escape("username") + " " + user.escape("age") + " " + user.escape("zip_code") %>
+  <h3>
+</header>
+
+<content>
+  <nav id="tabs">
+    <a href="">INFO</a>
+    <a href="">PHOTOS</a>
+    <a href="">QUESTIONS</a>
+  </nav>
+
+  <section id="info">
+    <section id="essays">
+      <%= this.partial({url: 'templates/essay_form.ejs'}) %>
+    </section>
+
+    <section id="details">
+     <%= this.partial({url: 'templates/essay_form.ejs'}) %>
+    </section>
+  </section>
+
+  <section id="photos">
+    <%= this.partial({url: 'templates/essay_form.ejs'}) %>
+  </section>
+
+  <section id="questions">
+    <%= this.partial({url: 'templates/essay_form.ejs'}) %>
+  </section>
+</content>
+
