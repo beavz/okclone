@@ -1,3 +1,13 @@
 OKC.Models.Response = Backbone.Model.extend({
-  //how do I set this to have a question with answers? << like a nested collection but just a model
+  urlRoot: "api/responses/",
+  collection: OKC.Collections.UserResponses,
+  
+  parse: function (attributes) {
+    this.question = new OKC.Models.Question( 
+      attributes.question, 
+      { parse : true }
+    );
+    delete attributes.question; 
+    return attributes;
+  }
 })

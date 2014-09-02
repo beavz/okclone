@@ -1,4 +1,6 @@
 OkClone::Application.routes.draw do
+  get "/", to: "static_pages#main"
+  
   ##RAILS
   resource :session,  only: [:new, :create, :destroy]
   resources :users,   only: [:new, :create, :show, :index, :update]
@@ -6,11 +8,11 @@ OkClone::Application.routes.draw do
   
   ##FOR BACKBONE
   namespace :api, defaults: { format: :json } do
-    resources :users, only: [:show, :index, :update] do
-      resources :responses, only: [:show]
-    end
-    resources :questions, only: [:show] do
-      resources :answers, only: [:show]
+    resources :users, only: [:show, :index, :update], shallow: true do
+      resources :responses, only: [:index, :show]
+      resources :questions, only: [:index, :show] do
+        resources :answers, only: [:index, :show]
+      end
     end
   end
 

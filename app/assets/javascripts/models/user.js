@@ -1,14 +1,15 @@
 OKC.Models.User = Backbone.Model.extend({
+  urlRoot: "api/users",
   // subcollections:
   responses: function () {
     this._responses = this._responses ||
-      new App.Collections.UserResponses([], { user: this });
+      new OKC.Collections.UserResponses([], { user: this });
     return this._responses;
   },
   
   unanswered_questions: function () {
     this._unanswered_questions = this._unanswered_questions ||
-      new App.Collections.UserQuestions([], { user: this });
+      new OKC.Collections.UserQuestions([], { user: this });
     return this._unanswered_questions;
   },
   

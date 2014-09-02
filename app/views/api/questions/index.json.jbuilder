@@ -1,0 +1,1 @@
+json.partial! partial: "question", collection: @questions, as: :question

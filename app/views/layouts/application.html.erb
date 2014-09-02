@@ -3,7 +3,9 @@
 <head>
   <title>OkClone</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <% if signed_in? %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <% end %>
   <%= csrf_meta_tags %>
 
   <style>
