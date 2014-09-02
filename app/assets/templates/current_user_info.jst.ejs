@@ -1,11 +1,5 @@
-<p>JUST TESTING: INFO</p>
-
 <% var essays = OKC.formatting_data.get("current_essays") %>
 <% var details = OKC.formatting_data.get("details") %>
-
-<section id="details">
-  details
-</section>
 
 <section id="essays">
   <% _.each(essays, function (essay) { %>
@@ -25,5 +19,27 @@
 
     <% } %>
   <% }); %>
+</section>
+
+
+<section id="details">
+  <form data-id="details">
+    <table>
+      <% _.each(details, function (detail) { %>
+        <tr>
+          <td><%= detail.label %></td>
+          <td>
+            <% if (detail.type === "dropdown") { %>
+              <%= detail.options[user.get(detail.key)] %>
+            <% } else if (detail.type === "text") { %>
+              <%= user.get(detail.key) %>
+            <% } else if (detail.type === "age_range") { %>
+              <%= user.get("min_age") + " - " + user.get("max_age ")%>
+            <% } %>
+          </td>
+        </tr>
+      <% }); %>
+    </table>
+  </form>
 </section>
 

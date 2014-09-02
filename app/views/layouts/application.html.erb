@@ -89,7 +89,7 @@
   <h1>OKCLONE</h1>
 
 	<h3><%= current_user.username %></h3>
-  <a href="<%= user_url(current_user) %>">PROFILE</a>
+  <a href="/#/users/<%= current_user.id %>">PROFILE</a>
   <h3>SETTINGS</h3>
 	<form action="<%= session_url %>" method="POST">
 		<%= auth_token %>

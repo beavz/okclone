@@ -28,16 +28,13 @@ json.details do
   json.offspring { json.partial! "detail", detail: "offspring", label: "Children"}
   json.pets { json.partial! "detail", detail: "pets", label: "Pets"}
 
-  json.min_age do
-    json.type :text
-    json.label "Age"
-    json.key "min_age"
+  json.looking_for do
+    json.label "Looking for:"
   end
 
-  json.max_age do
-    json.type :text
+  json.age_range do
+    json.type :age_range
     json.label "Age"
-    json.key "max_age"
   end
 
   json.looking_for_status { json.partial! "detail", detail: "looking_for_status", label: "Status"}
@@ -45,58 +42,22 @@ json.details do
   json.looking_for_gender do
     json.type :radio
     json.label "Gender"
-    json.selections [
-      {
-        key: :is_looking_for_men,
-        label: t( :is_looking_for_men )
-      },
-      {
-        key: :is_looking_for_women,
-        label: t( :is_looking_for_women )
-      }
-    ]
+    json.options do
+      json.set!( :is_looking_for_men, t( :is_looking_for_men ))
+      json.set!( :is_looking_for_women, t( :is_looking_for_women ))
+    end
   end
 
   json.looking_for_activities do
     json.type :radio
     json.label "For"
-    json.selections [
-      {
-        key: :is_looking_for_friends,
-        label: t( :is_looking_for_friends )
-      },
-      {
-        key: :is_looking_for_ltdating,
-        label: t( :is_looking_for_ltdating )
-      },
-      {
-        key: :is_looking_for_sexitimes,
-        label: t( :is_looking_for_sexitimes )
-      },
-      {
-        key: :is_looking_for_stdating,
-        label: t( :is_looking_for_stdating )
-      }
-    ]
+    json.options do
+      json.set!( :is_looking_for_friends, t( :is_looking_for_friends ))
+      json.set!( :is_looking_for_ltdating, t( :is_looking_for_ltdating ))
+      json.set!( :is_looking_for_sexitimes, t( :is_looking_for_sexitimes ))
+      json.set!( :is_looking_for_stdating, t( :is_looking_for_stdating ))
+    end
   end
 
 end
 
-
-  # json.gender do
-#     json.type :dropdown
-#     json.label "Gender"
-#     json.options User.genders do |key, val|
-#       json.key key
-#       json.label t(key)
-#     end
-#   end
-
-
-
-# :is_looking_for_men, *
-# :is_looking_for_women, *
-# :is_looking_for_friends, *
-# :is_looking_for_ltdating, *
-# :is_looking_for_stdating, *
-# :is_looking_for_sexitimes, *

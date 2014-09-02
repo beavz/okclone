@@ -4,7 +4,8 @@ details = detail.pluralize
 json.type :dropdown
 json.label label
 json.key detail
-json.options User.send(details.to_sym) do |key, val|
-  json.key key
-  json.label t(key)
+json.options do
+  User.send(details.to_sym).each do |key, val|
+    json.set!(key, t(key))
+  end
 end
