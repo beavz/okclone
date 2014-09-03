@@ -18,7 +18,7 @@
       <button class="edit" data-id="<%= essay.key %>">EDIT</button>
 
     <% } %>
-  <% }); %>
+  <% }) %>
 </section>
 
 
@@ -28,18 +28,88 @@
       <% _.each(details, function (detail) { %>
         <tr>
           <td><%= detail.label %></td>
+
           <td>
             <% if (detail.type === "dropdown") { %>
-              <%= detail.options[user.get(detail.key)] %>
+              <% if (editing["details"]) { %>
+                <select name="user[<%= detail.key %>]">
+                  <% _.each(_.keys(detail.options), function (key) { %>
+                    <%= user.get(detail.key) === key%>
+                    <option
+                      value="<%= key %>"
+                      <% if (user.get(detail.key) === key) { %>
+                        <%= ' selected="true"'  %>
+                      <% } %>
+                      >
+                      <%= detail.options[key] %>
+                    </option>
+                  <% }) %>
+                </select>
+              <% } else { %>
+                <%= detail.options[user.get(detail.key)] %>
+              <% } %>
+
             <% } else if (detail.type === "text") { %>
-              <%= user.get(detail.key) %>
+              <% if (editing["details"]) { %>
+                <input
+                  type="text"
+                  name="user[height]"
+                  value="<%= user.escape("height") %>">
+              <% } else { %>
+                <%= user.escape("height") || "--"  %>
+              <% } %>
+
+
             <% } else if (detail.type === "age_range") { %>
-              <%= user.get("min_age") + " - " + user.get("max_age ")%>
+              <% if (editing["details"]) { %>
+                <input
+                  type="text"
+                  name="user[min_age]"
+                  value="<%= user.escape("min_age") %>">
+                  -
+                <input
+                  type="text"
+                  name="user[max_age]"
+                  value="<%= user.escape("max_age") %>">
+              <% } else { %>
+                <% if (user.get("min_age") && user.get("max_age")) { %>
+                  <%= user.get("min_age") + " - " + user.get("max_age") %>
+                <% } else { %>
+                  --
+                <% } %>
+              <% } %>
+
+            <% } else if (detail.type === "radio") { %>
+              <% _.each(_.keys(detail.options), function (key) { %>
+                <% if (editing["details"]) { %>
+                  <input
+                    type="radio"
+                    name="user[<%= key %>]"
+                    value="true"
+                    <% if (user.get(key)) { %>
+                      <%= ' selected="true"'  %>
+                    <% } %> >
+                  <label><%= detail.options[key] %></label>
+                  <br>
+                <% } else { %>
+                  <% if (user.get(key)) { %>
+                    <%= detail.options[key] %><br>
+                  <% } %>
+                <% } %>
+              <% }) %>
+
             <% } %>
           </td>
+
+
         </tr>
-      <% }); %>
+      <% }) %>
     </table>
+    <% if (editing.details) { %>
+      <input type="submit" value="SAVE">
+    <% } else { %>
+      <button class="edit" data-id="details">EDIT</button>
+    <% } %>
   </form>
 </section>
 
