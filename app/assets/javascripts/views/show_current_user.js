@@ -9,7 +9,9 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
   events: {
     "click nav.tabs": "changeTab",
     "click button.edit" : "showForm",
-    "submit form" : "update"
+    "click button.cancel" : "hideForm",
+    "submit form.user-update" : "updateUser",
+    "submit form.response-update" : "updateResponse"
   },
 
   partials: {
@@ -50,12 +52,34 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
     this.render();
   },
 
-  update: function (event) {
+  hideForm: function (event) {
     event.preventDefault();
-    var form = $(event.currentTarget)
+    var key = $(event.target).data().id;
+    this.editing[key] = false;
+    this.render();
+  },
+
+  updateUser: function (event) {
+    event.preventDefault();
+    var form = $(event.currentTarget);
     var params = form.serializeJSON();
     OKC.current_user.save(params, { patch : true });
     this.editing[form.data().id] = false;
     this.render();
+  },
+
+  updateResponse: function (event) {
+    event.preventDefault();
+    var that = this;
+    var form = $(event.currentTarget);
+    var res_id = form.data().res;
+    var params = form.serializeJSON();
+    OKC.current_user.responses().get(res_id).save(params, {patch: true})
+    OKC.current_user.fetch({
+      success: function () {
+        that.editing[form.data().id] = false;
+        that.render();
+      }
+    });
   }
 })

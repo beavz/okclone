@@ -6,13 +6,13 @@
     <h3><%= essay.text %></h3>
 
     <% if (editing[essay.key]) { %>
-      <form data-id="<%= essay.key %>">
+      <form data-id="<%= essay.key %>" class="user-update">
         <textarea name="user[<%= essay.key %>]">
           <%= user.escape(essay.key) %>
         </textarea>
         <input type="submit" value="SAVE">
       </form>
-
+      <button class="cancel" data-id="<%= essay.key %>">CANCEL</button>
     <% } else { %>
       <p><%= user.escape(essay.key) %></p>
       <button class="edit" data-id="<%= essay.key %>">EDIT</button>
@@ -23,7 +23,9 @@
 
 
 <section id="details">
-  <form data-id="details">
+  <% if (editing["details"]) { %>
+  <form data-id="details" class="user-update">
+    <% } %>
     <table>
       <% _.each(details, function (detail) { %>
         <tr class="<%= detail.type %>">
@@ -108,9 +110,11 @@
     </table>
     <% if (editing.details) { %>
       <input type="submit" value="SAVE">
+      </form>
+      <button class="cancel" data-id="details">CANCEL</button>
     <% } else { %>
       <button class="edit" data-id="details">EDIT</button>
     <% } %>
-  </form>
+
 </section>
 

@@ -9,7 +9,7 @@ OkClone::Application.routes.draw do
   ##FOR BACKBONE
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:show, :index, :update], shallow: true do
-      resources :responses, only: [:index, :show]
+      resources :responses, only: [:index, :show, :update]
       resources :questions, only: [:index, :show] do
         resources :answers, only: [:index, :show]
       end

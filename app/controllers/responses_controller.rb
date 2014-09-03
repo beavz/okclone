@@ -36,6 +36,8 @@ class ResponsesController < ApplicationController
     redirect_to :back
   end
 
+  private
+
   def response_params
     params.require(:response).permit(:answer_id, :explanation)
   end
