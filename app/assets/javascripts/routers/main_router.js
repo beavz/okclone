@@ -36,7 +36,7 @@ OKC.Routers.Main = Backbone.Router.extend({
     } else {
       user = new OKC.Models.User({ "id" : id });
       user.fetch({
-        success: function () {
+        success: function (user) {
           user.collection = OKC.users;
           OKC.users.add(user);
         }

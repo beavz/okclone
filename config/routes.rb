@@ -3,7 +3,7 @@ OkClone::Application.routes.draw do
 
   ##RAILS
   resource :session,  only: [:new, :create, :destroy]
-  resources :users,   only: [:new, :create, :update] ## :show, :index,
+  resources :users,   only: [:new, :create, :show, :index, :update] ##
   resources :responses, only: [:new, :create, :destroy, :update]
 
   ##FOR BACKBONE
