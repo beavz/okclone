@@ -18,7 +18,7 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
     ".questions" : "current_user_questions"
   },
 
-  template: JST["show_current_user"],
+  template: JST["show_user"],
 
   render: function () {
     var content = this.template({

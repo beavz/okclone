@@ -26,7 +26,7 @@
   <form data-id="details">
     <table>
       <% _.each(details, function (detail) { %>
-        <tr>
+        <tr class="<%= detail.type %>">
           <td><%= detail.label %></td>
 
           <td>
@@ -49,7 +49,7 @@
                 <%= detail.options[user.get(detail.key)] %>
               <% } %>
 
-            <% } else if (detail.type === "text") { %>
+            <% } else if (detail.type === "height") { %>
               <% if (editing["details"]) { %>
                 <input
                   type="text"
@@ -82,12 +82,15 @@
             <% } else if (detail.type === "radio") { %>
               <% _.each(_.keys(detail.options), function (key) { %>
                 <% if (editing["details"]) { %>
+                  <input type="hidden"
+                    name="user[<%= key %>]"
+                    value="false" >
                   <input
-                    type="radio"
+                    type="checkbox"
                     name="user[<%= key %>]"
                     value="true"
                     <% if (user.get(key)) { %>
-                      <%= ' selected="true"'  %>
+                      <%= ' checked="true"'  %>
                     <% } %> >
                   <label><%= detail.options[key] %></label>
                   <br>
@@ -100,8 +103,6 @@
 
             <% } %>
           </td>
-
-
         </tr>
       <% }) %>
     </table>

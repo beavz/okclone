@@ -1,0 +1,49 @@
+<% var essays = OKC.formatting_data.get("current_essays") %>
+<% var details = OKC.formatting_data.get("details") %>
+
+<section id="essays">
+  <% _.each(essays, function (essay) { %>
+    <% if (user.get(essay.key)) { %>
+      <h3><%= essay.text %></h3>
+      <p><%= user.escape(essay.key) %></p>
+    <% } %>
+
+  <% }) %>
+</section>
+
+
+<section id="details">
+    <table>
+      <% _.each(details, function (detail) { %>
+        <tr class="<%= detail.type %>">
+          <td><%= detail.label %></td>
+
+          <td>
+            <% if (detail.type === "dropdown") { %>
+              <%= detail.options[user.get(detail.key)] %>
+
+            <% } else if (detail.type === "height") { %>
+              <%= user.escape("height") || "--"  %>
+
+            <% } else if (detail.type === "age_range") { %>
+              <% if (user.get("min_age") && user.get("max_age")) { %>
+                <%= user.get("min_age") + " - " + user.get("max_age") %>
+              <% } else { %>
+                --
+              <% } %>
+
+            <% } else if (detail.type === "radio") { %>
+              <% _.each(_.keys(detail.options), function (key) { %>
+                <% if (user.get(key)) { %>
+                  <%= detail.options[key] %>
+                  <br>
+                <% } %>
+              <% }) %>
+            <% } %>
+          </td>
+
+        </tr>
+      <% }) %>
+    </table>
+
+</section>

@@ -9,7 +9,7 @@ json.details do
   json.ethnicity { json.partial! "detail", detail: "ethnicity", label: "Ethnicity"}
 
   json.height do
-    json.type :text
+    json.type :height
     json.label "Height"
   end
 
@@ -29,6 +29,7 @@ json.details do
   json.pets { json.partial! "detail", detail: "pets", label: "Pets"}
 
   json.looking_for do
+    json.type :subtitle
     json.label "Looking for:"
   end
 
@@ -53,9 +54,10 @@ json.details do
     json.label "For"
     json.options do
       json.set!( :is_looking_for_friends, t( :is_looking_for_friends ))
+      json.set!( :is_looking_for_stdating, t( :is_looking_for_stdating ))
       json.set!( :is_looking_for_ltdating, t( :is_looking_for_ltdating ))
       json.set!( :is_looking_for_sexitimes, t( :is_looking_for_sexitimes ))
-      json.set!( :is_looking_for_stdating, t( :is_looking_for_stdating ))
+
     end
   end
 
