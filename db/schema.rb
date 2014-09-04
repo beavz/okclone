@@ -11,11 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140826154127) do
+ActiveRecord::Schema.define(version: 20140904141917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+<<<<<<< Local Changes
+
+=======
   create_table "acceptable_responses", force: true do |t|
     t.integer  "user_id",    null: false
     t.integer  "answer_id",  null: false
@@ -24,6 +27,15 @@ ActiveRecord::Schema.define(version: 20140826154127) do
   end
 
   add_index "acceptable_responses", ["user_id", "answer_id"], name: "index_acceptable_responses_on_user_id_and_answer_id", unique: true, using: :btree
+
+  create_table "albums", force: true do |t|
+    t.string   "name",       null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "albums", ["user_id"], name: "index_albums_on_user_id", using: :btree
 
   create_table "answers", force: true do |t|
     t.integer  "question_id", null: false
@@ -39,6 +51,19 @@ ActiveRecord::Schema.define(version: 20140826154127) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "pictures", force: true do |t|
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.text     "caption"
+    t.integer  "album_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pictures", ["album_id"], name: "index_pictures_on_album_id", using: :btree
 
   create_table "questions", force: true do |t|
     t.text     "text",       null: false
@@ -66,7 +91,7 @@ ActiveRecord::Schema.define(version: 20140826154127) do
     t.string   "email",                                 null: false
     t.integer  "age"
     t.integer  "zip_code"
-    t.integer  "gender"
+    t.integer  "gender",                   default: 0
     t.integer  "orientation",              default: 0
     t.integer  "ethnicity",                default: 0
     t.integer  "height"
@@ -101,11 +126,13 @@ ActiveRecord::Schema.define(version: 20140826154127) do
     t.text     "essay6",                   default: ""
     t.text     "essay7",                   default: ""
     t.text     "essay8",                   default: ""
+    t.integer  "avatar_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["username"], name: "index_users_on_username", using: :btree
+>>>>>>> External Changes
 
 end

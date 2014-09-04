@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string  :email,           null: false, unique: true
       t.integer :age
       t.integer :zip_code
-      t.integer :gender
+      t.integer :gender,            default: 0
       t.integer :orientation,       default: 0
       t.integer :ethnicity,         default: 0
       t.integer :height
@@ -42,6 +42,8 @@ class CreateUsers < ActiveRecord::Migration
       t.text    :essay6, default: ""
       t.text    :essay7, default: ""
       t.text    :essay8, default: ""
+
+      t.integer :avatar_id
 
       t.timestamps
     end

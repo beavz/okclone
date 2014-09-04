@@ -28,10 +28,17 @@ class User < ActiveRecord::Base
 
   has_many :responses
   has_many :acceptable_responses
+  has_many :albums
   has_many(
     :answered_questions,
     through: :responses,
     source: :question
+  )
+  has_one(
+    :avatar,
+    class_name: "Picture",
+    foreign_key: :avatar_id,
+    primary_key: :id
   )
 
   def self.find_by_credentials(username, password)
