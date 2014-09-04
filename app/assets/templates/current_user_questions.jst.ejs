@@ -1,42 +1,55 @@
-<% _.each( user.responses().models, function (response) { %>
-  <% var quest = response.question %>
-  <% var ans = quest.answers().get(response.get("answer_id")) %>
+<section id="questions">
+  <% _.each( user.responses().models, function (response) { %>
+    <% var quest = response.question %>
+    <% var ans = quest.answers().get(response.get("answer_id")) %>
 
-  <h3><%= quest.escape("text") %></h3>
-  <% if (editing["response" + response.id]) { %>
-    <form
-      data-id="response<%= response.id %>"
-      data-res="<%= response.id %>"
-      class="response-update">
+    <h3><%= quest.escape("text") %></h3>
+    <% if (editing["response" + response.id]) { %>
+      <form
+        data-id="response<%= response.id %>"
+        data-res="<%= response.id %>"
+        class="response-update">
 
-      <% _.each( quest.answers().models, function (answer) { %>
-        <input
-          type="radio"
-          name="response[answer_id]"
-          value="<%= answer.id %>"
-          <% if (answer.id == ans.id) { %>
-            <%= 'checked="true"' %>
-          <% } %> >
-        <label><%= answer.escape("text") %></label>
+        <% _.each( quest.answers().models, function (answer) { %>
+          <input
+            type="radio"
+            name="response[answer_id]"
+            value="<%= answer.id %>"
+            <% if (answer.id == ans.id) { %>
+              <%= 'checked="true"' %>
+            <% } %> >
+
+          <label><%= answer.escape("text") %></label>
           <br>
-      <% }) %>
 
-      <textarea name="response[explanation]">
-        <%= response.escape("explanation") %>
-      </textarea>
+        <% }) %>
 
-      <input type="submit" value="SAVE">
-    </form>
-    <button class="cancel" data-id="response<%= response.id %>">CANCEL</button>
+        <textarea
+          name="response[explanation]"
+          ><%= response.escape("explanation") %></textarea>
 
-  <% } else { %>
+        <input type="submit" value="SAVE">
+      </form>
 
-    <p><%= ans.escape("text") %></p>
-    <p><%= response.escape("explanation") %></p>
+      <button
+        class="delete"
+        data-id="<%= response.id %>">DELETE ANSWER</button>
 
-    <button class="edit" data-id="response<%= response.id %>">EDIT</button>
+      <button
+        class="cancel"
+        data-id="response<%= response.id %>">CANCEL</button>
 
-  <% } %>
+    <% } else { %>
 
+      <p><%= ans.escape("text") %></p>
+      <p><%= response.escape("explanation") %></p>
 
-<% }) %>
+      <button class="edit" data-id="response<%= response.id %>">EDIT</button>
+
+    <% } %>
+
+  <% }) %>
+
+  <a href="#/questions">ANSWER MORE :)</a>
+
+</section>

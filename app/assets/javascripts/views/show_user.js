@@ -28,7 +28,7 @@ OKC.Views.ShowUser = Backbone.View.extend({
     var tabContent = JST[this.partials[tab]]({
       user: this.model
     });
-    this.$(tab).html(tabContent);
+    this.$(".tab-content").html(tabContent);
 
     return this;
   },

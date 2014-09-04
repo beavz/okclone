@@ -26,6 +26,9 @@ module Api
     end
 
     def destroy
+      @response = current_user.responses.find(params[:id])
+      @response.delete
+      render :show
     end
 
     private

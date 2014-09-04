@@ -1,15 +1,15 @@
-<% _.each( user.responses().models, function (response) { %>
+<section class="questions">
 
-    <% var quest = response.question %>
-    <% var ans = quest.answers().get(response.get("answer_id")) %>
+  <% _.each( user.responses().models, function (response) { %>
 
-
-   <h3><%= quest.escape("text") %></h3>
-   <p><%= ans.escape("text") %></p>
-   <p><%= response.escape("explanation") %></p>
-
-<% }) %>
+      <% var quest = response.question %>
+      <% var ans = quest.answers().get(response.get("answer_id")) %>
 
 
+     <h3><%= quest.escape("text") %></h3>
+     <p><%= ans.escape("text") %></p>
+     <p><%= response.escape("explanation") %></p>
 
+  <% }) %>
 
+</section>

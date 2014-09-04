@@ -10,6 +10,7 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
     "click nav.tabs": "changeTab",
     "click button.edit" : "showForm",
     "click button.cancel" : "hideForm",
+    "click button.delete" : "deleteResponse",
     "submit form.user-update" : "updateUser",
     "submit form.response-update" : "updateResponse"
   },
@@ -34,7 +35,7 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
       user: this.model,
       editing: this.editing
     });
-    this.$(tab).html(tabContent);
+    this.$(".tab-content").html(tabContent);
 
     return this;
   },
@@ -81,5 +82,20 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
         that.render();
       }
     });
+  },
+
+  deleteResponse: function (event) {
+    event.preventDefault();
+    var that = this;
+    var form = $(event.currentTarget);
+    var res_id = form.data().id;
+    OKC.current_user.responses().get(res_id).destroy();
+    OKC.current_user.fetch({
+      success: function () {
+        that.editing[form.data().id] = false;
+        that.render();
+      }
+    });
+
   }
 })
