@@ -1,0 +1,1 @@
+json.partial! partial: "album", collection: @albums, as: :album

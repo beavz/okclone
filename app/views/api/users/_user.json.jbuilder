@@ -37,5 +37,7 @@ json.(user,
   :essay5,
   :essay6,
   :essay7,
-  :essay8
+  :essay8,
+  :avatar_id,
 )
+json.avatar user.avatar.image.url(:small)
