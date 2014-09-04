@@ -1,5 +1,6 @@
 module Api
   class PicturesController < ApiController
+    wrap_parameters :picture, include: [:album_id, :caption, :image]
 
     def index
       album = Album.find(params[:album_id])
@@ -14,8 +15,7 @@ module Api
     end
 
     def create
-      album = current_user.albums.find(params[:album_id])
-      @picture = album.pictures.new(picture_params)
+      @picture = current_user.pictures.new(picture_params)
       @picture.save
 
       render :show

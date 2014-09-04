@@ -1,0 +1,1 @@
+OKC.Collections.Albums = Backbone.Collection.extend({});

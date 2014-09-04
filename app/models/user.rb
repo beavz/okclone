@@ -37,8 +37,13 @@ class User < ActiveRecord::Base
   has_one(
     :avatar,
     class_name: "Picture",
-    foreign_key: :avatar_id,
-    primary_key: :id
+    foreign_key: :id,
+    primary_key: :avatar_id
+  )
+  has_many(
+    :pictures,
+    through: :albums,
+    source: :pictures
   )
 
   def self.find_by_credentials(username, password)

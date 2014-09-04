@@ -40,4 +40,10 @@ json.(user,
   :essay8,
   :avatar_id,
 )
-json.avatar user.avatar.image.url(:small)
+
+if user.avatar
+  json.avatar user.avatar.image.url(:small)
+end
+
+json.responses user.responses, partial: "api/responses/response", as: :response
+json.albums user.albums, partial: "api/albums/album", as: :album

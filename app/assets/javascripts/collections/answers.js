@@ -1,0 +1,1 @@
+OKC.Collections.Answers = Backbone.Collection.extend({});

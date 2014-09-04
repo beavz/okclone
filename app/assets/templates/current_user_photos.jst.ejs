@@ -1,3 +1,39 @@
 <section id="photos">
-  PLACEHOLDER
+  <% _.each(user.albums().models, function (album) { %>
+    <h3><%= album.escape("name") %></h3>
+    <hr>
+    <ul>
+      <% _.each(album.pictures().models, function (picture) { %>
+        <li>
+          <img src="<%= picture.escape("small_img") %>">
+        </li>
+      <% }) %>
+      <li>
+        <h3>Upload photo:</h3>
+        <form class="picture-create" data-id="<%= album.id %>">
+          <input
+            type="file"
+            class="image-upload"
+            data-id="<%= album.id %>"
+            name="image">
+
+          <label>
+            Add caption:
+            <input type="text" name="picture[caption]">
+          </label>
+          <input type="submit" value="UPLOAD">
+        </form>
+      </li>
+    </ul>
+    <% }) %>
+
+  <form class="album-create">
+    <h3>Create a new album:</h3>
+    <label>name:</label>
+    <input
+      type="text"
+      name="album[name]">
+    <input type="submit" value="SAVE">
+  </form>
+
 </section>

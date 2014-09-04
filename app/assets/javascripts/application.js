@@ -14,9 +14,10 @@
 //= require jquery_ujs
 //= require jquery.serializeJSON
 
-
 //= require underscore
 //= require backbone
+//= require backbone.subset
+
 //= require ok_clone
 //= require_tree ../templates
 //= require_tree ./models
