@@ -2,85 +2,13 @@
 <html>
 <head>
   <title>OkClone</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag  "application", media: "all", "data-turbolinks-track" => true %>
   <% if signed_in? %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <% end %>
   <%= csrf_meta_tags %>
 
-  <style>
-  a, h1, h2, h3, h4, h5, p, input, button {
-    text-decoration: none;
-    color: inherit;
-    border: 0;
-    padding: 0;
-    font-size: 14px;
-    font-weight: normal;
-    background: transparent;
-    style: block;
-  }
-
-  textarea {
-    border: none;
-    width: 400px;
-  }
-
-  h1 {
-    color: #6666CC;
-    font-weight: bold;
-    font-size: 20px;
-    float: right;
-    padding-right: 50px;
-  }
-
-  nav {
-    background: lightgray;
-  }
-
-  * {
-    font-family: sans-serif;
-/*    border: 1px solid red;*/
-  }
-
-  img {
-    width: 100px;
-    height:100px;
-  }
-
-  body {
-    padding: 25px;
-    width: 1000px;
-    margin: auto;
-    min-height: 700px;
-  }
-
-  #top-nav {
-    display:block;
-    width: 980px;
-    height: 50px;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  #top-nav > form, #top-nav > h3, #top-nav > a {
-    float: left;
-    margin: 10px;
-  }
-  #side-nav {
-    float: left;
-    height: 600px;
-    width: 100px;
-    padding: 10px;
-    margin-right: 10px;
-  }
-  main {
-    background: transparent;
-    display:block;
-    float: right;
-    width: 830px;
-    padding: 20px;
-  }
-
-  </style>
+  
 </head>
 
 <body>

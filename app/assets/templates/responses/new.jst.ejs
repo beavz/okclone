@@ -1,0 +1,18 @@
+<h3><%= question.escape("text") %></h3>
+
+<form>
+  <% _.each( question.answers().models, function (answer) { %>
+    <input
+      type="radio"
+      name="response[answer_id]"
+      value="<%= answer.id %>">
+
+    <label><%= answer.escape("text") %></label>
+    <br>
+  <% }) %>
+
+  <label>Explain:</label>
+  <textarea name="response[explanation]"></textarea>
+
+  <input type="submit" value="SAVE">
+</form>

@@ -4,10 +4,11 @@ OKC.Routers.Main = Backbone.Router.extend({
   },
 
   routes: {
-    "users/:id": "show"
+    "users/:id": "showUser",
+    "questions" : "newResponse"
   },
 
-  show: function (id) {
+  showUser: function (id) {
     if (id == OKC.current_user.id) {
       OKC.current_user.fetch();
       var view = new OKC.Views.ShowCurrentUser({
@@ -21,6 +22,16 @@ OKC.Routers.Main = Backbone.Router.extend({
     }
 
     this._swapView(view);
+  },
+
+  newResponse: function () {
+    var that = this;
+    OKC.current_user.fetch({
+      success: function (user) {
+        var view = new OKC.Views.NewResponse();
+        that._swapView(view);
+      }
+    })
   },
 
   _swapView: function (view) {

@@ -13,6 +13,10 @@ module Api
     end
 
     def create
+      @response = current_user.responses.new(response_params)
+      @response.save
+
+      render :show
     end
 
     def update

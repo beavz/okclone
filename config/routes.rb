@@ -1,9 +1,9 @@
 OkClone::Application.routes.draw do
-  get "/", to: "static_pages#main"
+  get "/", to: "static_pages#main", as: :root
 
   ##RAILS
   resource :session,  only: [:new, :create, :destroy]
-  resources :users,   only: [:new, :create, :show, :index, :update] ##
+  resources :users,   only: [:new, :create, :show, :index, :update]
   resources :responses, only: [:new, :create, :destroy, :update]
 
   ##FOR BACKBONE
@@ -14,6 +14,7 @@ OkClone::Application.routes.draw do
         resources :answers, only: [:index, :show]
       end
     end
+    resources :responses, only: [:create]
     get "formatting_data", to: "users#formatting_data"
   end
 
