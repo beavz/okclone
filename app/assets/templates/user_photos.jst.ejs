@@ -1,3 +1,15 @@
 <section id="photos">
-  PLACEHOLDER
+
+    <% _.each(user.albums().models, function (album) { %>
+      <h3><%= album.escape("name") %></h3>
+      <hr>
+      <ul>
+        <% _.each(album.pictures().models, function (picture) { %>
+          <li>
+            <img src="<%= picture.escape("small_img") %>">
+          </li>
+        <% }) %>
+      </ul>
+    <% }) %>
+
 </section>

@@ -1,4 +1,4 @@
-OKC.Collections.UserQuestions = Backbone.Collection.extend({
+OKC.Subsets.NextQuestion = Backbone.Subset.extend({
   model: OKC.Models.Question,
 
   url: function () {
@@ -6,6 +6,6 @@ OKC.Collections.UserQuestions = Backbone.Collection.extend({
   },
 
   initialize: function (models, options) {
-    this.question = options.question;
+    this.user = options.user;
   }
 });

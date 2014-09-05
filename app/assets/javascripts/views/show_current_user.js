@@ -5,6 +5,8 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
     this.fileStrings = {};
 
     this.listenTo(this.model, "sync", this.render);
+    this.listenTo(OKC.albums, "sync", this.render);
+    this.listenTo(OKC.pictures, "sync", this.render);
   },
 
   events: {
@@ -84,7 +86,7 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
       success: function () {
         that.editing[form.data().id] = false;
       }
-    });
+    }); //need to make user responses a subset
   },
 
   deleteResponse: function (event) {
@@ -102,12 +104,15 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
 
   createAlbum: function (event) {
     event.preventDefault();
-    var that = this;
-    var params = $(event.currentTarget).serializeJSON();
-    var album = new OKC.Models.Album(params.album);
-    album.save();
+    var view = this;
+    var params = $(event.target).serializeJSON();
+    var album = new OKC.Models.Album();
 
-    this.model.fetch();
+    album.save( params.album,
+      { success: function (album) {
+        view.model.albums().add(album);
+      }
+    });
   },
 
   createPicture: function (event) {
@@ -122,15 +127,16 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
       album_id: albumId
     },
     {
-      success: function () {
+      success: function (picture) {
         delete picture.attributes.image;
-        OKC.current_user.fetch();
-
+          picture.fetch( { success: function (picture) {
+            view.model.albums().get(albumId).pictures().add(picture);
+            delete view.fileStrings[albumId];
+          }
+        });
       }
     });
-    view.fileStrings[albumId];
   },
-
 
   handleFile: function (event) {
     var view = this;
@@ -142,7 +148,7 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
       view.fileStrings[albumId] = this.result;
     };
 
-    if(file){
+    if (file){
       reader.readAsDataURL(file);
     }
   }

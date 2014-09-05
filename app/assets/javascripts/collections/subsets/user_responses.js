@@ -1,5 +1,4 @@
-OKC.Collections.UserResponses = Backbone.Collection.extend({
-  model: OKC.Models.Response,
+OKC.Subsets.UserResponses = Backbone.Subset.extend({
 
   url: function () {
     return this.user.url + "/responses";

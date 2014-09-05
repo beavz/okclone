@@ -15,3 +15,4 @@ OKC.Models.Album = Backbone.Model.extend({
     return attributes;
   }
 });
+

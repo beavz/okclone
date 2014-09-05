@@ -1,1 +1,3 @@
-OKC.Collections.Albums = Backbone.Collection.extend({});
+OKC.Collections.Albums = Backbone.Collection.extend({
+  model: OKC.Models.Album
+});

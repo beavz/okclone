@@ -1,6 +1,7 @@
 OKC.Views.NewResponse = Backbone.View.extend({
   initialize: function () {
-    this.model = OKC.current_user.unanswered_questions().first();
+    this.model = OKC.current_user.unanswered_question;
+
   },
 
   template: JST["responses/new"],
@@ -23,19 +24,14 @@ OKC.Views.NewResponse = Backbone.View.extend({
 
   submit: function (event) {
     event.preventDefault();
-    var that = this;
     var params = $(event.currentTarget).serializeJSON();
-    var response = new OKC.Models.Response(params.response);
-    console.log("this happens first");
-    response.save(); //this happens
+    var response = new OKC.Models.Response();
+    response.save(params.response, {
+      success: function (response) {
 
-    OKC.current_user.fetch({
-      success: function (user) {
-        that.model = OKC.current_user.unanswered_questions().first();
-        console.log(that.model);
-        that.render();
       }
     });
+
   }
 
 });
