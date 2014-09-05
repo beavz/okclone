@@ -1,12 +1,15 @@
-<header>
-  <img src="http://cityyearnh.files.wordpress.com/2011/02/boat.jpg" id="profile-pic">
-  <h3 id="basic-info">
+<header class="profile-header group">
+  <img
+    src="<%= picUrl %>"
+    id="profile-pic">
+
+  <h3>
     <%= user.escape("username") + " " + user.escape("age") + " " + user.escape("zip_code") %>
   <h3>
 </header>
 
-<content>
-  <nav class="tabs">
+<section class="content">
+  <nav class="tabs group">
     <a data-id=".info" href="">INFO</a>
     <a data-id=".photos" href="">PHOTOS</a>
     <a data-id=".questions" href="">QUESTIONS</a>
@@ -15,5 +18,5 @@
   <div class="tab-content">
   </div>
 
-</content>
+</section>
 

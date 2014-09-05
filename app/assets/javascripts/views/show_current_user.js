@@ -5,8 +5,8 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
     this.fileStrings = {};
 
     this.listenTo(this.model, "sync", this.render);
-    this.listenTo(OKC.albums, "sync", this.render);
-    this.listenTo(OKC.pictures, "sync", this.render);
+    this.listenTo(OKC.albums, "add sync", this.render);
+    this.listenTo(OKC.pictures, "add sync", this.render);
   },
 
   events: {
@@ -14,11 +14,14 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
     "click button.edit" : "showForm",
     "click button.cancel" : "hideForm",
     "click button.delete" : "deleteResponse",
+    "click button.delete-pic" : "deletePic",
+    "click button.set-profile-pic" : "setProfilePic",
     "submit form.user-update" : "updateUser",
     "submit form.response-update" : "updateResponse",
     "submit form.album-create" : "createAlbum",
     "submit form.picture-create" : "createPicture",
-    "change .image-upload" : "handleFile"
+    "change .image-upload" : "handleFile",
+    "click li" : "renderAlbumModal"
   },
 
   partials: {
@@ -30,9 +33,16 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
   template: JST["show_user"],
 
   render: function () {
+    var picUrl = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRjx8wrEQgkGqIOibsnjQ_5_7Vd0BC_8BzuEa7WVlVSmKIR9Zoq"
+    var picId = this.model.get("avatar_id")
+
+    if (picId && OKC.pictures.get(picId)) {
+      picUrl = OKC.pictures.get(this.model.get("avatar_id")).get("small_img");
+    }
     var content = this.template({
       user: this.model,
-      tab: this.tab
+      tab: this.tab,
+      picUrl: picUrl
     });
     this.$el.html(content);
 
@@ -102,6 +112,30 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
     });
   },
 
+  deletePic: function (event) {
+    event.preventDefault();
+    var view = this;
+    var picId = $(event.target).data().id;
+    console.log(OKC.pictures.get(picId))
+    OKC.pictures.get(picId).destroy({
+      success: function () {
+        view.render();
+      }
+    });
+  },
+
+  setProfilePic: function (event) {
+    event.preventDefault();
+    var view = this;
+    var picId = $(event.target).data().id;
+    this.model.save({ avatar_id: picId }, {
+      patch : true,
+      success: function () {
+        view.render();
+      }
+    });
+  },
+
   createAlbum: function (event) {
     event.preventDefault();
     var view = this;
@@ -151,6 +185,14 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
     if (file){
       reader.readAsDataURL(file);
     }
+  },
+
+  renderAlbumModal: function (event) {
+    console.log("hi from the view")
+    var template = JST["album_modal_content"];
+    var albumId = $(event.target).data().id;
+    var content = template({ album: this.model.albums().get(albumId) })
+    $()
   }
 
 });

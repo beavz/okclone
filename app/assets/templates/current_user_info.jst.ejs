@@ -1,123 +1,123 @@
 <% var essays = OKC.formattingData.get("current_essays") %>
 <% var details = OKC.formattingData.get("details") %>
 
-<section id="info">
 
-  <section id="essays">
-    <% _.each(essays, function (essay) { %>
-      <h3><%= essay.text %></h3>
+<section class="info">
 
-      <% if (editing[essay.key]) { %>
-        <form data-id="<%= essay.key %>" class="user-update">
-          <textarea name="user[<%= essay.key %>]">
-            <%= user.escape(essay.key) %>
-          </textarea>
-          <input type="submit" value="SAVE">
-        </form>
-        <button class="cancel" data-id="<%= essay.key %>">CANCEL</button>
-      <% } else { %>
-        <p><%= user.escape(essay.key) %></p>
-        <button class="edit" data-id="<%= essay.key %>">EDIT</button>
+  <% if (editing["details"]) { %>
+  <form data-id="details" class="user-update">
+    <% } %>
+    <table class="details">
+      <% _.each(details, function (detail) { %>
+        <tr class="<%= detail.type %>">
+          <td><%= detail.label %></td>
 
-      <% } %>
-    <% }) %>
-  </section>
-
-
-  <section id="details">
-    <% if (editing["details"]) { %>
-    <form data-id="details" class="user-update">
-      <% } %>
-      <table>
-        <% _.each(details, function (detail) { %>
-          <tr class="<%= detail.type %>">
-            <td><%= detail.label %></td>
-
-            <td>
-              <% if (detail.type === "dropdown") { %>
-                <% if (editing["details"]) { %>
-                  <select name="user[<%= detail.key %>]">
-                    <% _.each(_.keys(detail.options), function (key) { %>
-                      <%= user.get(detail.key) === key%>
-                      <option
-                        value="<%= key %>"
-                        <% if (user.get(detail.key) === key) { %>
-                          <%= ' selected="true"'  %>
-                        <% } %>
-                        >
-                        <%= detail.options[key] %>
-                      </option>
-                    <% }) %>
-                  </select>
-                <% } else { %>
-                  <%= detail.options[user.get(detail.key)] %>
-                <% } %>
-
-              <% } else if (detail.type === "height") { %>
-                <% if (editing["details"]) { %>
-                  <input
-                    type="text"
-                    name="user[height]"
-                    value="<%= user.escape("height") %>">
-                <% } else { %>
-                  <%= user.escape("height") || "--"  %>
-                <% } %>
-
-
-              <% } else if (detail.type === "age_range") { %>
-                <% if (editing["details"]) { %>
-                  <input
-                    type="text"
-                    name="user[min_age]"
-                    value="<%= user.escape("min_age") %>">
-                    -
-                  <input
-                    type="text"
-                    name="user[max_age]"
-                    value="<%= user.escape("max_age") %>">
-                <% } else { %>
-                  <% if (user.get("min_age") && user.get("max_age")) { %>
-                    <%= user.get("min_age") + " - " + user.get("max_age") %>
-                  <% } else { %>
-                    --
-                  <% } %>
-                <% } %>
-
-              <% } else if (detail.type === "radio") { %>
-                <% _.each(_.keys(detail.options), function (key) { %>
-                  <% if (editing["details"]) { %>
-                    <input type="hidden"
-                      name="user[<%= key %>]"
-                      value="false" >
-                    <input
-                      type="checkbox"
-                      name="user[<%= key %>]"
-                      value="true"
-                      <% if (user.get(key)) { %>
-                        <%= ' checked="true"'  %>
-                      <% } %> >
-                    <label><%= detail.options[key] %></label>
-                    <br>
-                  <% } else { %>
-                    <% if (user.get(key)) { %>
-                      <%= detail.options[key] %><br>
-                    <% } %>
-                  <% } %>
-                <% }) %>
-
+          <td>
+            <% if (detail.type === "dropdown") { %>
+              <% if (editing["details"]) { %>
+                <select name="user[<%= detail.key %>]">
+                  <% _.each(_.keys(detail.options), function (key) { %>
+                    <%= user.get(detail.key) === key%>
+                    <option
+                      value="<%= key %>"
+                      <% if (user.get(detail.key) === key) { %>
+                        <%= ' selected="true"'  %>
+                      <% } %>
+                      >
+                      <%= detail.options[key] %>
+                    </option>
+                  <% }) %>
+                </select>
+              <% } else { %>
+                <%= detail.options[user.get(detail.key)] %>
               <% } %>
-            </td>
-          </tr>
-        <% }) %>
-      </table>
-      <% if (editing.details) { %>
-        <input type="submit" value="SAVE">
-        </form>
-        <button class="cancel" data-id="details">CANCEL</button>
-      <% } else { %>
-        <button class="edit" data-id="details">EDIT</button>
-      <% } %>
 
-  </section>
+            <% } else if (detail.type === "height") { %>
+              <% if (editing["details"]) { %>
+                <input
+                  type="text"
+                  name="user[height]"
+                  value="<%= user.escape("height") %>">
+              <% } else { %>
+                <%= user.escape("height") || "--"  %>
+              <% } %>
+
+
+            <% } else if (detail.type === "age_range") { %>
+              <% if (editing["details"]) { %>
+                <input
+                  type="text"
+                  name="user[min_age]"
+                  value="<%= user.escape("min_age") %>">
+                  -
+                <input
+                  type="text"
+                  name="user[max_age]"
+                  value="<%= user.escape("max_age") %>">
+              <% } else { %>
+                <% if (user.get("min_age") && user.get("max_age")) { %>
+                  <%= user.get("min_age") + " - " + user.get("max_age") %>
+                <% } else { %>
+                  --
+                <% } %>
+              <% } %>
+
+            <% } else if (detail.type === "radio") { %>
+              <% _.each(_.keys(detail.options), function (key) { %>
+                <% if (editing["details"]) { %>
+                  <input type="hidden"
+                    name="user[<%= key %>]"
+                    value="false" >
+                  <input
+                    type="checkbox"
+                    name="user[<%= key %>]"
+                    value="true"
+                    <% if (user.get(key)) { %>
+                      <%= ' checked="true"'  %>
+                    <% } %> >
+                  <label><%= detail.options[key] %></label>
+                  <br>
+                <% } else { %>
+                  <% if (user.get(key)) { %>
+                    <%= detail.options[key] %><br>
+                  <% } %>
+                <% } %>
+              <% }) %>
+            <% } %>
+          </td>
+        </tr>
+      <% }) %>
+    </table>
+    <% if (editing.details) { %>
+      <input type="submit" value="SAVE">
+      </form>
+      <button class="cancel" data-id="details">CANCEL</button>
+    <% } else { %>
+      <button class="edit" data-id="details">EDIT</button>
+    <% } %>
+
+
+<% _.each(essays, function (essay) { %>
+  <h3><%= essay.text %></h3>
+
+  <% if (editing[essay.key]) { %>
+    <form data-id="<%= essay.key %>" class="user-update">
+      <textarea name="user[<%= essay.key %>]">
+        <%= user.escape(essay.key) %>
+      </textarea>
+      <input type="submit" value="SAVE">
+    </form>
+    <button class="cancel" data-id="<%= essay.key %>">CANCEL</button>
+  <% } else { %>
+    <p><%= user.escape(essay.key) || "fill me out!" %></p>
+    <button class="edit" data-id="<%= essay.key %>">EDIT</button>
+
+  <% } %>
+<% }) %>
+
+
+
+
+
 
 </section>

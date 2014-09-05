@@ -1,0 +1,17 @@
+header.profile-header {
+  display: block;
+  height: 100px;
+}
+
+.profile-header > img {
+  display: block;
+  float: left;
+}
+
+.profile-header > h3 {
+  display: block;
+  float: left;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}

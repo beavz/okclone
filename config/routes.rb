@@ -16,11 +16,11 @@ OkClone::Application.routes.draw do
       end
 
       resources :albums, only: [:index, :show, :destroy] do
-        resources :pictures, only: [:index, :show, :destroy]
+        resources :pictures, only: [:index, :show]
       end
     end
 
-    resources :pictures, only: [:create]
+    resources :pictures, only: [:create, :destroy]
     resources :responses, only: [:create]
     resources :albums, only: [:create]
 

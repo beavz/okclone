@@ -1,0 +1,6 @@
+<% _.each(album.pictures().models, function (picture) { %>
+  <li>
+    <img src="<%= picture.escape("full_img") %>">
+    <p><%= picture.escape("caption") %></p>
+  </li>
+<% }) %>

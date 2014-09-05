@@ -1,4 +1,4 @@
-OKC.Subsets.UserAlbums = Backbone.Collection.extend({
+OKC.Subsets.UserAlbums = Backbone.Subset.extend({
   model: OKC.Models.Album,
 
   url: function () {

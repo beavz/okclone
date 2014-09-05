@@ -6,6 +6,13 @@
       <% _.each(album.pictures().models, function (picture) { %>
         <li>
           <img src="<%= picture.escape("small_img") %>">
+          <button
+            class="delete-pic"
+            data-id="<%= picture.id %>">DELETE</button>
+          <button
+            class="set-profile-pic"
+            data-id="<%= picture.id %>"
+            >MAKE PROFILE PIC</button>
         </li>
       <% }) %>
       <li>

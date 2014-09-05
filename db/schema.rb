@@ -16,9 +16,6 @@ ActiveRecord::Schema.define(version: 20140904141917) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< Local Changes
-
-=======
   create_table "acceptable_responses", force: true do |t|
     t.integer  "user_id",    null: false
     t.integer  "answer_id",  null: false
@@ -133,6 +130,5 @@ ActiveRecord::Schema.define(version: 20140904141917) do
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["username"], name: "index_users_on_username", using: :btree
->>>>>>> External Changes
 
 end

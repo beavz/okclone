@@ -24,7 +24,7 @@ window.OKC = {
 
 
 
-    new OKC.Routers.Main({$rootEl : $(".main")});
+    new OKC.Routers.Main({$rootEl : $("main")});
     Backbone.history.start();
 
     console.log("backbone runs");

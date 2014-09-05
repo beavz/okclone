@@ -22,7 +22,9 @@ module Api
     end
 
     def destroy
-      @picture = current_user.pictures.find()
+      @picture = current_user.pictures.find(params[:id])
+      @picture.delete
+      render :show
     end
 
     private
