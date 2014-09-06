@@ -1,0 +1,126 @@
+section.essays {
+  display: block;
+  float: left;
+  width: 345px;
+  padding-right: 5px;
+}
+
+
+article.essay {
+  position: relative;
+  display: block;
+}
+
+article.essay > h3 {
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+article.essay > p {
+  display: inline-block;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+article.essay > button.edit {
+  display: none;
+}
+
+article.essay:hover > button.edit {
+  display: block;
+  background-image: url("edit_icon.png");
+  background-size: 20px;
+  opacity: 0.7;
+  position: absolute;
+  top: 0;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+article.essay textarea {
+  border: 0;
+  width: 100%;
+  font-size: 13px;
+  height: 100px;
+}
+
+article.essay .save, article.essay .cancel {
+  float: right;
+  background: #ccc;
+  margin: 10px;
+}
+
+div.detail-wrapper {
+   position: relative;
+   float: right;
+   width: 300px;
+   display: block;
+   background: #eee;
+}
+
+div.detail-wrapper button.edit {
+  display: none;
+}
+
+div.detail-wrapper:hover button.edit {
+  display: block;
+  background-image: url("edit_icon.png");
+  background-size: 30px;
+  opacity: 0.7;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 30px;
+  height: 30px;
+}
+
+div.detail-wrapper .save, div.detail-wrapper .cancel {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 5px 10px;
+  float: right;
+  color: #000;
+  background: #ccc;
+  margin: 10px;
+}
+
+table.details {
+  float: right;
+  padding: 5px;
+}
+
+table.details tr {
+  display: block;
+  border-bottom: 1px solid #999;
+}
+
+table.details tr:last-child {
+  border: 0;
+}
+
+table.details td {
+  width: 175px;
+}
+
+table.details td.label {
+  text-align: right;
+  color: blue;
+  padding: 5px;
+  font-size: 10px;
+  width: 90px;
+}
+
+td {
+  padding: 5px;
+}
+
+table.details select {
+  padding: 0;
+  width: 175px;
+}
+
+input.age-range {
+  width: 10px;
+}

@@ -19,24 +19,3 @@ div.tab-content {
   padding: 15px 0 0 0;
 }
 
-section.info > h3 {
-  display: inline-block;
-  font-size: 13px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-section.info > p {
-  display: inline-block;
-  font-size: 13px;
-  margin-bottom: 15px;
-}
-
-section.info > button.edit {
-
-}
-
-table.details {
-  float: right;
-  background: #ccf;
-}

@@ -1,11 +1,10 @@
 <section id="photos">
 
     <% _.each(user.albums().models, function (album) { %>
-      <h3><%= album.escape("name") %></h3>
-      <hr>
-      <ul class="album-photos" data-id="<%= album.id %>">
+      <h3 class="album-name"><%= album.escape("name") %></h3>
+      <ul class="album-photos group" data-id="<%= album.id %>">
         <% _.each(album.pictures().models, function (picture) { %>
-          <li>
+          <li class="photo">
             <img src="<%= picture.escape("small_img") %>">
           </li>
         <% }) %>
@@ -40,53 +39,3 @@
 
 </script>
 
-<style>
-
-  .modal {
-    display: none;
-  }
-
-  .modal.is-active {
-    display: block;
-  }
-
-  .modal-content {
-    position: absolute;
-    z-index: 1000;
-    background: #fff;
-    top: 50px;
-
-    width: 700px;
-    min-height: 300px;
-    padding: 50px;
-
-    margin: auto;
-
-  }
-
-  .modal-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    background: #222;
-    opacity: .7;
-    width: 100%;
-    height: 100%;
-    z-index: 999;
-  }
-
-  .modal-close {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 30px;
-    font-weight: bold;
-    color: #999;
-    cursor: pointer;
-  }
-
-  .modal-close:hover {
-    color: #333;
-  }
-</style>

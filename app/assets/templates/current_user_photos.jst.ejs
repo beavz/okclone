@@ -1,10 +1,9 @@
 <section id="photos">
   <% _.each(user.albums().models, function (album) { %>
-    <h3><%= album.escape("name") %></h3>
-    <hr>
-    <ul>
+    <h3 class="album-name"><%= album.escape("name") %></h3>
+    <ul class="album-photos group">
       <% _.each(album.pictures().models, function (picture) { %>
-        <li>
+        <li class="photo">
           <img src="<%= picture.escape("small_img") %>">
           <button
             class="delete-pic"
@@ -15,8 +14,7 @@
             >MAKE PROFILE PIC</button>
         </li>
       <% }) %>
-      <li>
-        <h3>Upload photo:</h3>
+      <li class="new-photo">
         <form class="picture-create" data-id="<%= album.id %>">
           <input
             type="file"
@@ -28,7 +26,7 @@
             Add caption:
             <input type="text" name="picture[caption]">
           </label>
-          <input type="submit" value="UPLOAD">
+          <input type="submit" value="UPLOAD PHOTO">
         </form>
       </li>
     </ul>

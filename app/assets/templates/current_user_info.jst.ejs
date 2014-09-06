@@ -4,13 +4,35 @@
 
 <section class="info">
 
+  <section class="essays">
+    <% _.each(essays, function (essay) { %>
+      <article class="essay group">
+        <h3><%= essay.text %></h3>
+
+        <% if (editing[essay.key]) { %>
+          <form data-id="<%= essay.key %>" class="user-update">
+            <textarea name="user[<%= essay.key %>]"><%= user.escape(essay.key) %></textarea>
+            <input type="submit" class="save" value="SAVE">
+          </form>
+          <button class="cancel" data-id="<%= essay.key %>">CANCEL</button>
+        <% } else { %>
+          <p><%= user.escape(essay.key) || "fill me out!" %></p>
+          <button class="edit" data-id="<%= essay.key %>"></button>
+        <% } %>
+      </article>
+    <% }) %>
+  </section>
+
+
+  <div class="detail-wrapper">
+
   <% if (editing["details"]) { %>
   <form data-id="details" class="user-update">
     <% } %>
     <table class="details">
       <% _.each(details, function (detail) { %>
         <tr class="<%= detail.type %>">
-          <td><%= detail.label %></td>
+          <td class="label"><%= detail.label %></td>
 
           <td>
             <% if (detail.type === "dropdown") { %>
@@ -47,11 +69,13 @@
               <% if (editing["details"]) { %>
                 <input
                   type="text"
+                  class="age-range"
                   name="user[min_age]"
                   value="<%= user.escape("min_age") %>">
                   -
                 <input
                   type="text"
+                  class="age-range"
                   name="user[max_age]"
                   value="<%= user.escape("max_age") %>">
               <% } else { %>
@@ -87,37 +111,15 @@
           </td>
         </tr>
       <% }) %>
-    </table>
-    <% if (editing.details) { %>
-      <input type="submit" value="SAVE">
-      </form>
-      <button class="cancel" data-id="details">CANCEL</button>
-    <% } else { %>
-      <button class="edit" data-id="details">EDIT</button>
-    <% } %>
+      </table>
+      <% if (editing.details) { %>
+        <input type="submit" class="save" value="SAVE">
+        <button class="cancel" data-id="details">CANCEL</button>
+        </form>
 
-
-<% _.each(essays, function (essay) { %>
-  <h3><%= essay.text %></h3>
-
-  <% if (editing[essay.key]) { %>
-    <form data-id="<%= essay.key %>" class="user-update">
-      <textarea name="user[<%= essay.key %>]">
-        <%= user.escape(essay.key) %>
-      </textarea>
-      <input type="submit" value="SAVE">
-    </form>
-    <button class="cancel" data-id="<%= essay.key %>">CANCEL</button>
-  <% } else { %>
-    <p><%= user.escape(essay.key) || "fill me out!" %></p>
-    <button class="edit" data-id="<%= essay.key %>">EDIT</button>
-
-  <% } %>
-<% }) %>
-
-
-
-
-
+      <% } else { %>
+        <button class="edit" data-id="details"></button>
+      <% } %>
+</div>
 
 </section>

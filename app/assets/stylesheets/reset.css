@@ -8,7 +8,7 @@ a, h1, h2, h3, h4, h5, p, input, button, section, header, ul, li, nav {
   font-weight: normal;
   background: transparent;
   vertical-align: baseline;
-  border: 1px solid red;
+/*  border: 1px solid red;*/
 }
 
 ul {
@@ -30,4 +30,16 @@ body {
   content: "";
   display: block;
   clear: both;
+}
+
+select {
+  -webkit-appearance: none;
+  border-radius: 0;
+  padding: 0 0 0 5px;
+  margin: 0;
+  border: 0;
+  background: #fff;
+  font: inherit;
+  font-size: inherit;
+  color: inherit;
 }

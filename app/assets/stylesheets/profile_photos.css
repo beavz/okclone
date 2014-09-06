@@ -1,0 +1,70 @@
+h3.album-name {
+  display: block;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 5px 0 5px 0;
+  border-bottom: 1px solid #999;
+}
+
+ul.album-photos {
+  margin-bottom: 20px;
+}
+
+li.photo {
+  position: relative;
+  display: block;
+  float: left;
+  margin: 4px;
+  size: 100px;
+}
+
+li.photo button {
+  display: none;
+}
+
+li.photo:hover button {
+  display: block;
+  position: absolute;
+  color: #fff;
+  background: #333;
+  opacity: .8;
+  padding: 5px;
+  font-size: 9px;
+  text-align: center;
+  width: 90px;
+}
+
+li.photo:hover .set-profile-pic {
+  right: 5px;
+  top: 30px;
+}
+
+li.photo:hover .delete-pic {
+  right: 5px;
+  top: 5px;
+
+}
+
+li.new-photo {
+  display: block;
+  float: left;
+  margin: 4px;
+  padding: 5px;
+  width: 630px;
+  height: 20px;
+  background: #ccc;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.new-photo input[type="file"]{
+  width: 200px;
+  font-size: 13px;
+}
+
+.new-photo input[type="submit"]{
+  float: right;
+  width: 200px;
+  font-weight: bold;
+  width: 150px;
+}
