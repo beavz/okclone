@@ -23,12 +23,25 @@ OKC.Models.User = Backbone.Model.extend({
     return this._albums;
   },
 
+  unansweredQuestions: function () {
+    this._unansweredQuestions = this._unansweredQuestions ||
+    new OKC.Subsets.UnansweredQuestions([], {
+      parentCollection: OKC.questions
+    });
+    return this._unansweredQuestions;
+  },
+
   parse: function (attributes) {
     this.albums().set(attributes.albums, { parse: true });
     delete attributes.albums;
 
     this.responses().set(attributes.responses, { parse: true });
     delete attributes.responses;
+
+    if (attributes.unansweredQuestions) {
+      this.unansweredQuestions().set(attributes.unansweredQuestions, {parse: true});
+      delete attributes.unansweredQuestions;
+    }
 
     return attributes;
   },

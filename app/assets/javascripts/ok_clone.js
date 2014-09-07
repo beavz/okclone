@@ -17,12 +17,6 @@ window.OKC = {
     OKC.users = new OKC.Collections.Users();
 
     var user = OKC.current_user = new OKC.Models.User({ id: user_id });
-    OKC.nextQuestion = new OKC.Subsets.NextQuestion([], {
-      user: user,
-      parentCollection: OKC.questions
-    })
-
-
 
     new OKC.Routers.Main({$rootEl : $("main")});
     Backbone.history.start();

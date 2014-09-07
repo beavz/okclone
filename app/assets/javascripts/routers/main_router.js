@@ -28,6 +28,7 @@ OKC.Routers.Main = Backbone.Router.extend({
     var that = this;
     OKC.current_user.fetch({
       success: function (user) {
+        console.log("fetched");
         var view = new OKC.Views.NewResponse();
         that._swapView(view);
       }

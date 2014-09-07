@@ -7,6 +7,10 @@ module Api
     def show
       @user = User.find(params[:id])
 
+      if @user == current_user
+        @questions = Question.find_unanswered_questions(@user)
+      end
+
       render "show"
     end
 

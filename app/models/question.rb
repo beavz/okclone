@@ -2,8 +2,8 @@ class Question < ActiveRecord::Base
   has_many :answers
   has_many :responses, through: :answers, source: :responses
 
-  def self.find_unanswered(user)
-    self.find_by_sql([<<-SQL, user.id]).first
+  def self.find_unanswered_questions(user)
+    self.find_by_sql([<<-SQL, user.id])
       SELECT questions.*
       FROM questions
       WHERE questions.id NOT IN (
