@@ -15,8 +15,13 @@ module Api
     end
 
     def index
-      @users = User.all.where(["users.id != ?", current_user.id])
-      #change this to current_user.matched_users later??
+      if params[:search]
+        @users = User.find_by_search(params[:search], current_user.id)
+      elsif params[:browse]
+        @users = User.find_by_browse(params[:browse], current_user.id)
+      else
+        @users = User.where(["users.id != ?", current_user.id])
+      end
 
       render "index"
     end

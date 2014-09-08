@@ -1,7 +1,7 @@
 <section id="photos">
   <% _.each(user.albums().models, function (album) { %>
     <h3 class="album-name"><%= album.escape("name") %></h3>
-    <ul class="album-photos group">
+    <ul class="album-photos group" data-id="<%= album.id %>">
       <% _.each(album.pictures().models, function (picture) { %>
         <li class="photo">
           <img src="<%= picture.escape("small_img") %>">
@@ -42,3 +42,30 @@
   </form>
 
 </section>
+
+<div id="modal" class="modal">
+
+  <article class="modal-content">
+    <span class="modal-close hide-modal">&times;</span>
+    <ul class="pictures"></ul>
+  </article>
+
+  <div class="modal-screen hide-modal"></div>
+
+</div>
+
+<script>
+
+  window.showModal = function(){
+    $("#modal").addClass("is-active");
+  };
+
+  window.hideModal = function(){
+    $("#modal").removeClass("is-active");
+  }
+
+  $("body").on("click", ".hide-modal", window.hideModal);
+  $("body").on("click", "li", window.showModal);
+
+</script>
+

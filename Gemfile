@@ -42,5 +42,6 @@ group :production do
 end
 
 gem 'seed_dump'
+gem 'pg_search'
 
 

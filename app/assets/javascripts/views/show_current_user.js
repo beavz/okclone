@@ -21,7 +21,7 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
     "submit form.album-create" : "createAlbum",
     "submit form.picture-create" : "createPicture",
     "change .image-upload" : "handleFile",
-    "click li" : "renderAlbumModal"
+    "click ul" : "renderAlbumModal"
   },
 
   partials: {
@@ -96,7 +96,7 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
       success: function () {
         that.editing[form.data().id] = false;
       }
-    }); //need to make user responses a subset
+    });
   },
 
   deleteResponse: function (event) {
@@ -114,9 +114,9 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
 
   deletePic: function (event) {
     event.preventDefault();
+    event.stopPropagation();
     var view = this;
     var picId = $(event.target).data().id;
-    console.log(OKC.pictures.get(picId))
     OKC.pictures.get(picId).destroy({
       success: function () {
         view.render();
@@ -126,6 +126,7 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
 
   setProfilePic: function (event) {
     event.preventDefault();
+    event.stopPropagation();
     var view = this;
     var picId = $(event.target).data().id;
     this.model.save({ avatar_id: picId }, {
@@ -189,10 +190,12 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
 
   renderAlbumModal: function (event) {
     console.log("hi from the view")
-    var template = JST["album_modal_content"];
-    var albumId = $(event.target).data().id;
+    var template = JST["album_modal"];
+
+    var albumId = $(event.currentTarget).data().id;
+    console.log(this.model.albums().get(albumId).pictures())
     var content = template({ album: this.model.albums().get(albumId) })
-    $()
+    $('ul.pictures').html(content);
   }
 
 });

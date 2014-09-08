@@ -1,4 +1,15 @@
 class User < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :search_by_username, against: :username
+  pg_search_scope(
+    :keyword_search,
+    using: :tsearch,
+    against: [
+      :essay1, :essay1, :essay3, :essay4,
+      :essay5, :essay6, :essay7, :essay8
+    ]
+  )
+
   validates :session_token, :password_digest, presence: true
   validates :username, :email, presence: true, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
@@ -55,6 +66,43 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.param_to_int(detail, detail_param)
+    details_hash = User.send(detail.pluralize.to_sym)
+    new_param = [];
+    if detail_param
+      detail_param.each do |detail|
+        new_param << details_hash[detail]
+      end
+    end
+
+    new_param
+  end
+
+  def self.find_by_search(params, current_user_id)
+    if params[:username] != "";
+      return self.search_by_username(params[:username]).where(["users.id != ?", current_user_id])
+    elsif params[:keyword] != "";
+      return self.keyword_search(params[:keyword]).where(["users.id != ?", current_user_id])
+    end
+  end
+
+  def self.find_by_browse(params, current_user_id)
+    params = self.parse_browse_params(params)
+    self.where(["users.id != ?", current_user_id])
+      .where(["users.gender IN (?)", params[:gender]])
+      .where(["users.orientation IN (?)", params[:orientation]])
+      #.where(["users.age > ? AND users.age < ?", params[:min_age], params[:max_age]])
+  end
+
+  def self.parse_browse_params(params)
+    new_params = { min_age: params[:min_age], max_age: params[:max_age] };
+
+    new_params[:gender] = param_to_int("gender", params[:gender])
+    new_params[:orientation] = param_to_int("orientation", params[:orientation])
+
+    new_params
+  end
+
   def password=(word)
     @password = word
     self.password_digest = BCrypt::Password.create(word)
@@ -85,10 +133,13 @@ class User < ActiveRecord::Base
     return token
   end
 
+
   private
 
   def ensure_session_token
     self.session_token ||= self.generate_session_token
   end
+
+
 
 end
