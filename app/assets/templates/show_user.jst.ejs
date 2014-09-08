@@ -1,10 +1,10 @@
 <header class="profile-header group">
   <img
-    src="<%= picUrl %>"
+    src="<%= user.get("avatar") %>"
     id="profile-pic">
 
   <h3>
-    <%= user.escape("username") + " " + user.escape("age") + " " + user.escape("zip_code") %>
+    <%= user.escape("username") + " : " + user.escape("age") + " : " + user.escape("location") %>
   <h3>
 </header>
 

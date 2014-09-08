@@ -1,0 +1,55 @@
+main#sign-up {
+  background: #fff;
+  width: 650px;
+  margin: auto;
+  padding: 20px;
+}
+main#sign-up h2 {
+  font-weight: bold;
+}
+
+form.sign-up {
+  font-size: 18px;
+}
+
+form.sign-up button {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+
+main#sign-in {
+  background: #fff;
+  width: 650px;
+  margin: auto;
+  padding: 20px;
+}
+
+form#sign-in {
+  font-size: 18px;
+}
+form#sign-in button {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+a#sign-up {
+  display:block;
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+
+h5 {
+  color: #000;
+  font-size: 24px;
+  display: block;
+  text-align: right;
+  margin-top: 150px;
+  margin-right: 20px;
+  width: 400px;
+  float: right;
+}

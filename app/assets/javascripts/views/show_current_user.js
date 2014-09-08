@@ -21,7 +21,7 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
     "submit form.album-create" : "createAlbum",
     "submit form.picture-create" : "createPicture",
     "change .image-upload" : "handleFile",
-    "click li.photo" : "renderAlbumModal"
+    "click .photo" : "renderAlbumModal"
   },
 
   partials: {
@@ -33,16 +33,9 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
   template: JST["show_user"],
 
   render: function () {
-    var picUrl = "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRjx8wrEQgkGqIOibsnjQ_5_7Vd0BC_8BzuEa7WVlVSmKIR9Zoq"
-    var picId = this.model.get("avatar_id")
-
-    if (picId && OKC.pictures.get(picId)) {
-      picUrl = OKC.pictures.get(this.model.get("avatar_id")).get("small_img");
-    }
     var content = this.template({
       user: this.model,
-      tab: this.tab,
-      picUrl: picUrl
+      tab: this.tab
     });
     this.$el.html(content);
 

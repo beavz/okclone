@@ -2,7 +2,7 @@
   <% _.each( user.responses().models, function (response) { %>
     <% var quest = response.question %>
     <% var ans = quest.answers().get(response.get("answer_id")) %>
-
+    <article class="question group">
     <h3><%= quest.escape("text") %></h3>
     <% if (editing["response" + response.id]) { %>
       <form
@@ -23,12 +23,12 @@
           <br>
 
         <% }) %>
-
-        <textarea
+        <h4>explain: </h4>
+        <textarea class="explain"
           name="response[explanation]"
           ><%= response.escape("explanation") %></textarea>
 
-        <input type="submit" value="SAVE">
+        <input class="save-response" type="submit" value="SAVE">
       </form>
 
       <button
@@ -42,14 +42,14 @@
     <% } else { %>
 
       <p><%= ans.escape("text") %></p>
-      <p><%= response.escape("explanation") %></p>
+      <p class="explain"><%= response.escape("explanation") %></p>
 
-      <button class="edit" data-id="response<%= response.id %>">EDIT</button>
+      <button class="edit" data-id="response<%= response.id %>"></button>
 
     <% } %>
-
+    </article>
   <% }) %>
 
-  <a href="#/questions">ANSWER MORE :)</a>
+  <a href="#/questions">ANSWER MORE QUESTIONS</a>
 
 </section>

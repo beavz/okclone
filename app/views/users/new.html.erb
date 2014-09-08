@@ -1,29 +1,13 @@
-<style>
-button, a {
-  font-weight: bold;
-  font-size: 16px;
-}
-h1 {
-  color: #6666CC;
-  font-weight: bold;
-  font-size: 20px;
-  float: right;
-}
 
-h2 {
-  font-weight: bold;
-}
-body {
-  width: 600px;
-}
-</style>
-<h1>OKCLONE</h1>
+  <div class="logo-wrapper">
+    <img id="logo" src="<%= asset_path("heart.png") %>">
+    <h1 class="logo">OKCLONE</h1>
+  </div>
 
-<!--<h4 id="error-notice"><%#= flash[:now] %></h4>-->
-
+<main id="sign-up">
 <h2>About you:</h2>
 <br>
-<form action="<%= users_url %>" method="POST">
+<form class="sign-up" action="<%= users_url %>" method="POST">
   <%= auth_token %>
   <label>username:
     <input
@@ -62,3 +46,5 @@ body {
   <button>SIGN UP</button>
 
 </form>
+
+</main>

@@ -1,9 +1,9 @@
 <% var details = OKC.formattingData.get("details") %>
 
 <header class="browse-bar">
-  <h3>Browse</h3>
-  <form class="browse">
-    <h4>Gender</h4>
+  <h3>BROWSE</h3>
+  <form class="browse group">
+    <h4>Gender: </h4>
     <label>man
       <input type="checkbox" name="browse[gender][]" value="gen_man" checked="true">
     </label>
@@ -16,9 +16,9 @@
     <label>unanswered
       <input type="checkbox" name="browse[gender][]" value="gen_unans" checked="true">
     </label>
-
-    <h4>Orientation</h4>
-      </label>gay
+    <br>
+    <h4>Orientation:</h4>
+      <label>gay
         <input type="checkbox" name="browse[orientation][]" value="ori_gay" checked="true">
       </label>
       <label>straight
@@ -34,35 +34,45 @@
       <label>unanswered
         <input type="checkbox" name="browse[orientation][]" value="ori_unans" checked="true">
       </label>
-
-    <label>Age</label>
+    <br>
+    <h4>Age:</h4>
     <input
       type="text"
       name="browse[min_age]"
-      value="0">-<input type="submit"
+      value="0">-<input type="text"
       name="browse[max_age]"
       value="100">
 
-    <input type="submit" value="SUBMIT">
+    <input class="go" type="submit" value="GO">
   </form>
+
+  <h5>or</h5>
 </header>
 
 <header class="search-bar">
-  <h3>Search</h3>
-  <form class="search">
+  <h3>SEARCH</h3>
+  <form class="search group">
     <label>Username: </label>
     <input type="text" name="search[username]">
 
-    <label>Keyword: </label>
+    <label>or Keyword: </label>
     <input type="text" name="search[keyword]">
 
-    <input type="submit" value="SUBMIT">
+    <input class="go" type="submit" value="GO">
   </form>
 
 </header>
 
 <section class="content">
   <% _.each(users.models, function (user) { %>
-    <section><a href="/#/users/<%= user.id %>"><%= user.escape("username") %></a></section>
+    <a href="#/users/<%= user.id %>" class="profile-header group search-result">
+      <img
+        src="<%= user.get("avatar") %>"
+        id="profile-pic">
+
+      <h3>
+        <%= user.escape("username") + " : " + user.escape("age") + " : " + user.escape("location") %>
+      <h3>
+    </a>
   <% }); %>
 </section>

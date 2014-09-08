@@ -91,7 +91,7 @@ class User < ActiveRecord::Base
     self.where(["users.id != ?", current_user_id])
       .where(["users.gender IN (?)", params[:gender]])
       .where(["users.orientation IN (?)", params[:orientation]])
-      #.where(["users.age > ? AND users.age < ?", params[:min_age], params[:max_age]])
+      .where(["users.age >= ? AND users.age <= ?", params[:min_age], params[:max_age]])
   end
 
   def self.parse_browse_params(params)

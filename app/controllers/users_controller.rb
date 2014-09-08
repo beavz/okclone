@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
     if @user.save
       sign_in(@user)
-      redirect_to user_url(current_user)
+      redirect_to "#{root_url}/#/users/#{@user.id}"
     else
       flash[:now] = @user.errors.full_messages
       render :new

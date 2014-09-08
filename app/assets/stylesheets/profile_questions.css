@@ -1,0 +1,72 @@
+article.question {
+  position: relative;
+  display: block;
+  padding: 15px 15px 5px 15px;
+}
+
+article.question > h3 {
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+article.question h4 {
+  font-size: 12px;
+  font-weight: bold;
+  margin: 10px 0 0 0;
+}
+
+article.question > p {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+article.question .explain {
+  font-style: italic;
+}
+
+article.question > button.edit {
+  display: none;
+}
+
+article.question:hover > button.edit {
+  display: block;
+  background-image: url("edit_icon.png");
+  background-size: 20px;
+  opacity: 0.7;
+  position: absolute;
+  top: 15px;
+  right: 200px;
+  width: 20px;
+  height: 20px;
+}
+
+article.question input[type="radio"], article.question .answer {
+  margin-left: 20px;
+}
+
+article.question textarea {
+  border: 0;
+  width: 100%;
+  font-size: 13px;
+  height: 30px;
+  color: #333;
+  font-style: italic;
+}
+
+article.question .save-response, article.question .cancel, article.question .delete {
+  float: right;
+  background: #ccc;
+  margin: 10px;
+  padding: 2px 5px;
+}
+
+section#questions a {
+  float: right;
+  font-weight: bold;
+  font-size: 18px;
+  background: #ccc;
+  margin: 10px;
+  padding: 5px 10px;
+}

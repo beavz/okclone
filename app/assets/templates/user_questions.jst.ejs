@@ -5,10 +5,11 @@
       <% var quest = response.question %>
       <% var ans = quest.answers().get(response.get("answer_id")) %>
 
-
+    <article class="question">
      <h3><%= quest.escape("text") %></h3>
-     <p><%= ans.escape("text") %></p>
-     <p><%= response.escape("explanation") %></p>
+     <p class="answer"><%= ans.escape("text") %></p>
+     <p class="explain"><%= response.escape("explanation") %></p>
+    </article>
 
   <% }) %>
 

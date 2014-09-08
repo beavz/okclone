@@ -1,0 +1,53 @@
+header.browse-bar, header.search-bar {
+  background: #eee;
+  margin-bottom: 10px;
+  padding: 15px;
+  position: relative;
+  border: 1px solid #bbb;
+}
+
+.browse-bar h3, .search-bar h3 {
+  font-weight: bold;
+  font-size: 16px;
+
+}
+
+form.browse > label, form.search > label {
+  display: inline-block;
+  padding: 5px 10px 0 0;
+}
+
+form.browse > h4 {
+  display: inline-block;
+  width: 100px;
+}
+
+form.browse input[type="text"] {
+  width: 30px;
+  padding-left: 10px;
+}
+
+form.browse .go, form.search .go {
+  float: right;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  background: #bbb;
+  padding: 5px 10px;
+}
+
+header.browse-bar h5 {
+  font-size: 16px;
+  color: #fff;
+  padding: 4px 10px 4px 0;
+  position: absolute;
+  bottom: -15px;
+  z-index: 1000;
+  background: #bbb;
+  width: 25px;
+}
+
+.search-result {
+  display: block;
+  margin-bottom: 10px;
+}
