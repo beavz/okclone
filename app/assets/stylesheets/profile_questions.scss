@@ -32,7 +32,7 @@ article.question > button.edit {
 
 article.question:hover > button.edit {
   display: block;
-  background-image: url("edit_icon.png");
+  background-image: image-url("edit_icon.png");
   background-size: 20px;
   opacity: 0.7;
   position: absolute;

@@ -29,7 +29,7 @@ article.essay > button.edit {
 
 article.essay:hover > button.edit {
   display: block;
-  background-image: url("edit_icon.png");
+  background-image: image-url("edit_icon.png");
   background-size: 20px;
   opacity: 0.7;
   position: absolute;
@@ -66,7 +66,7 @@ div.detail-wrapper button.edit {
 
 div.detail-wrapper:hover button.edit {
   display: block;
-  background-image: url("edit_icon.png");
+  background-image: image-url("edit_icon.png");
   background-size: 30px;
   opacity: 0.7;
   position: absolute;
