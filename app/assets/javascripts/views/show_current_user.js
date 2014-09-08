@@ -21,7 +21,7 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
     "submit form.album-create" : "createAlbum",
     "submit form.picture-create" : "createPicture",
     "change .image-upload" : "handleFile",
-    "click ul" : "renderAlbumModal"
+    "click li.photo" : "renderAlbumModal"
   },
 
   partials: {

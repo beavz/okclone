@@ -1,9 +1,9 @@
 <section id="photos">
   <% _.each(user.albums().models, function (album) { %>
     <h3 class="album-name"><%= album.escape("name") %></h3>
-    <ul class="album-photos group" data-id="<%= album.id %>">
+    <ul class="album-photos group" >
       <% _.each(album.pictures().models, function (picture) { %>
-        <li class="photo">
+        <li class="photo" data-id="<%= album.id %>">
           <img src="<%= picture.escape("small_img") %>">
           <button
             class="delete-pic"
@@ -14,7 +14,8 @@
             >MAKE PROFILE PIC</button>
         </li>
       <% }) %>
-      <li class="new-photo">
+      </ul>
+      <div class="new-photo">
         <form class="picture-create" data-id="<%= album.id %>">
           <input
             type="file"
@@ -28,8 +29,8 @@
           </label>
           <input type="submit" value="UPLOAD PHOTO">
         </form>
-      </li>
-    </ul>
+      </div>
+
     <% }) %>
 
   <form class="album-create">

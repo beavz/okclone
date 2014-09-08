@@ -5,14 +5,26 @@
     height: 100px;
   }
 
+  div.logo-wrapper {
+    position: relative;
+  }
+
+  img#logo {
+    width: 110px;
+    height: 110px;
+    position: absolute;
+    z-index: -1;
+    top: -18px;
+    left: 5px;
+  }
+
 
   h1.logo {
     display: block;
     float: left;
-    font-size: 40px;
-    color: #05f;
-    padding: 10px 0 0 40px;
-    text-decoration: underline;
+    font-size: 50px;
+    color: #2768E9;
+    padding: 5px 0 0 65px;
   }
 
   nav.top {

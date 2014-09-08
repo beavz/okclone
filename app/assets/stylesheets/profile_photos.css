@@ -4,10 +4,11 @@ h3.album-name {
   font-size: 16px;
   padding: 5px 0 5px 0;
   border-bottom: 1px solid #999;
+  margin-bottom: 5px;
+  min-height: 15px;
 }
 
 ul.album-photos {
-  margin-bottom: 20px;
 }
 
 li.photo {
@@ -45,9 +46,8 @@ li.photo:hover .delete-pic {
 
 }
 
-li.new-photo {
+div.new-photo {
   display: block;
-  float: left;
   margin: 4px;
   padding: 5px;
   width: 630px;
@@ -55,6 +55,8 @@ li.new-photo {
   background: #ccc;
   font-size: 13px;
   font-weight: bold;
+  margin-bottom: 25px;
+
 }
 
 .new-photo input[type="file"]{
