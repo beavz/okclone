@@ -153,6 +153,4 @@ class User < ActiveRecord::Base
     self.session_token ||= self.generate_session_token
   end
 
-
-
 end
