@@ -1,4 +1,4 @@
-OKC.Subsets.MessageThread = Backbone.Subset.extend({
+OKC.Subsets.ThreadMessages = Backbone.Subset.extend({
   url: function () {
     "api/users/" + this.user.id + "messages";
   },
