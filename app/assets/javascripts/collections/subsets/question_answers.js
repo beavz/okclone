@@ -1,6 +1,4 @@
-OKC.Collections.QuestionAnswers = Backbone.Collection.extend({
-  model: OKC.Models.Answer,
-
+OKC.Subsets.QuestionAnswers = Backbone.Subset.extend({
   url: function () {
     return this.question.url + "/answers";
   },

@@ -31,7 +31,6 @@ OKC.Views.BrowseUsers = Backbone.View.extend({
       url: "/api/users",
       data: formData,
       success: function (users) {
-        console.log(users)
         view.collection.reset(users);
       }
     })

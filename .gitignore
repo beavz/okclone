@@ -17,3 +17,6 @@
 
 # Ignore application configuration
 /config/application.yml
+
+# DIE DS_STORE
+*/.DS_Store
