@@ -57,6 +57,19 @@ class User < ActiveRecord::Base
     source: :pictures
   )
 
+  has_many(
+    :messages_from,
+    class_name: "Message",
+    foreign_key: :from_user_id,
+    primary_key: :id
+  )
+  has_many(
+    :messages_to,
+    class_name: "Message",
+    foreign_key: :to_user_id,
+    primary_key: :id
+  )
+
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username);
     if user && user.has_password?(password)

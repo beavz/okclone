@@ -1,3 +1,15 @@
+<<<<<<< HEAD
 == OKClone
 
 a clone of the dating website okcupid.com. Ruby on Rails backend, backbone.js front end.
+
+== TODO
+* deal with the user_params security issue
+* implement messaging
+* user pusher to make messages update in real time
+* implement settings to allow users to change password/username/email etc.
+* make an easy demo user sign-in
+* implement "acceptable responses" in order to calculate match percentages
+* calculate, show, and sort browse results by match percentage
+* make browse & search page more user friendly
+>>>>>>> begin creating messages, update readme with todo list
