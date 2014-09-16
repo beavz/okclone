@@ -6,17 +6,12 @@ module Api
     end
 
     def index
-      if params[:user_id]
-        @messages = current_user.from_messages.where(to_user_id: params[:user_id])
-        @messages.concat( current_user.to_messages.where(from_user_id: params[:user_id]))
-      else
-        @messages = current_user.from_messages + current_user.to_messages
-      end
+      @messages = MessageThread.find(params[:message_thread_id]).messages
       render :index
     end
 
     def create
-      @message = Message.new(message_params)
+      @message = current_user.messages_from.new(message_params)
       @message.save
       render :show
     end
@@ -24,7 +19,7 @@ module Api
     private
 
     def message_params
-      params.require(:message).permit(:text, :from_user_id, :to_user_id)
+      params.require(:message).permit(:text, :to_user_id)
     end
   end
 end

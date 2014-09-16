@@ -6,7 +6,9 @@ OKC.Routers.Main = Backbone.Router.extend({
   routes: {
     "users/:id": "showUser",
     "questions" : "newResponse",
-    "users" : "usersIndex"
+    "users" : "usersIndex",
+    "threads": "threadsIndex",
+    "thread/:id": "showThread"
   },
 
   showUser: function (id) {
@@ -45,6 +47,18 @@ OKC.Routers.Main = Backbone.Router.extend({
         that._swapView(view);
       }
     });
+  },
+
+  threadsIndex: function () {
+    //TODO
+  },
+
+  showThread: function () {
+    //TODO
+  },
+  
+  newThread: function () {
+    //TODO
   },
 
   _swapView: function (view) {

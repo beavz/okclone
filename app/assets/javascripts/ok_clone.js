@@ -15,6 +15,7 @@ window.OKC = {
     OKC.answers = new OKC.Collections.Answers();
     OKC.responses = new OKC.Collections.Responses();
     OKC.users = new OKC.Collections.Users();
+    OKC.messages = new OKC.Collections.Messages();
 
     OKC.current_user = new OKC.Models.User({ id: user_id });
 

@@ -1,5 +1,6 @@
 class Message < ActiveRecord::Base
   validate :from_user_id, :to_user_id, :text, presence: true
+  belongs_to( :thread )
   belongs_to(
     :from_user,
     class_name: "User",
@@ -13,5 +14,5 @@ class Message < ActiveRecord::Base
     foreign_key: :to_user_id,
     primary_key: :id
   )
-  
+
 end
