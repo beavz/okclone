@@ -16,11 +16,12 @@ window.OKC = {
     OKC.responses = new OKC.Collections.Responses();
     OKC.users = new OKC.Collections.Users();
     OKC.messages = new OKC.Collections.Messages();
+    OKC.threads = new OKC.Collections.Threads();
 
     OKC.current_user = new OKC.Models.User({ id: user_id });
 
 
-    new OKC.Routers.Main({$rootEl : $("main")});
+    OKC.mainRouter = new OKC.Routers.Main({$rootEl : $("main")});
     Backbone.history.start();
     OKC.current_user.fetch();
   }

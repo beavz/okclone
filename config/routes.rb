@@ -20,7 +20,7 @@ OkClone::Application.routes.draw do
       end
     end
 
-    resources :threads, only: [:index, :show, :create], shallow: true do
+    resources :message_threads, only: [:index, :show, :create], shallow: true do
       resources :messages, only: [:index, :create]
     end
 

@@ -1,5 +1,5 @@
 OKC.Models.Thread = Backbone.Model.extend({
-  urlRoot: "/api/threads",
+  urlRoot: "/api/message_threads",
 
   initialize: function (options) {
     this.otherUser = options.otherUser;
@@ -16,7 +16,7 @@ OKC.Models.Thread = Backbone.Model.extend({
 
   parse: function (attributes) {
     this.messages().set(attributes.messages, { parse: true });
-    delete attributes.pictures;
+    delete attributes.messages;
     return attributes;
   }
 

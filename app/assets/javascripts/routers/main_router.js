@@ -8,7 +8,7 @@ OKC.Routers.Main = Backbone.Router.extend({
     "questions" : "newResponse",
     "users" : "usersIndex",
     "threads": "threadsIndex",
-    "thread/:id": "showThread"
+    "threads/:id": "showThread"
   },
 
   showUser: function (id) {
@@ -50,15 +50,24 @@ OKC.Routers.Main = Backbone.Router.extend({
   },
 
   threadsIndex: function () {
-    //TODO
+    OKC.threads.fetch() //should use get or fectch then just fetch messages?
+    var view = new OKC.Views.ThreadIndex({
+      collection: OKC.threads
+    });
+
+    this._swapView(view);
   },
 
-  showThread: function () {
-    //TODO
-  },
-  
-  newThread: function () {
-    //TODO
+  showThread: function (id) {
+    console.log("hello there human")
+    var thread = new OKC.Models.Thread({id: id});
+    console.log(thread)
+    thread.fetch() //should use get or fectch then just fetch messages?
+    var view = new OKC.Views.ShowThread({
+      model: thread
+    });
+
+    this._swapView(view);
   },
 
   _swapView: function (view) {

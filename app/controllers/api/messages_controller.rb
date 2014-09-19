@@ -1,6 +1,6 @@
 module Api
   class Api::MessagesController < ApiController
-    def show
+    def show 
       @message = messages.find(params[:id])
       render :show
     end

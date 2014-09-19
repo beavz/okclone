@@ -7,7 +7,8 @@ OKC.Views.ShowUser = Backbone.View.extend({
 
   events: {
     "click nav.tabs": "changeTab",
-    "click ul" : "renderAlbumModal"
+    "click ul" : "renderAlbumModal",
+    "click button.message-button": "messageUser"
   },
 
   partials: {
@@ -41,7 +42,6 @@ OKC.Views.ShowUser = Backbone.View.extend({
   },
 
   renderAlbumModal: function (event) {
-    console.log("hi from the view")
     var template = JST["album_modal"];
 
     var albumId = $(event.currentTarget).data().id;
@@ -49,5 +49,4 @@ OKC.Views.ShowUser = Backbone.View.extend({
     var content = template({ album: this.model.albums().get(albumId) })
     $('ul.pictures').html(content);
   }
-
 })

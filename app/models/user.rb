@@ -57,19 +57,6 @@ class User < ActiveRecord::Base
     source: :pictures
   )
 
-  has_many(
-    :messages_from,
-    class_name: "Message",
-    foreign_key: :from_user_id,
-    primary_key: :id
-  )
-  has_many(
-    :messages_to,
-    class_name: "Message",
-    foreign_key: :to_user_id,
-    primary_key: :id
-  )
-
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username);
     if user && user.has_password?(password)
@@ -93,9 +80,11 @@ class User < ActiveRecord::Base
 
   def self.find_by_search(params, current_user_id)
     if params[:username] != "";
-      return self.search_by_username(params[:username]).where(["users.id != ?", current_user_id])
+      return self.search_by_username(params[:username])
+        .where(["users.id != ?", current_user_id])
     elsif params[:keyword] != "";
-      return self.keyword_search(params[:keyword]).where(["users.id != ?", current_user_id])
+      return self.keyword_search(params[:keyword])
+        .where(["users.id != ?", current_user_id])
     end
   end
 
@@ -108,12 +97,15 @@ class User < ActiveRecord::Base
   end
 
   def self.parse_browse_params(params)
-    new_params = { min_age: params[:min_age], max_age: params[:max_age] };
-
+    new_params = { min_age: params[:min_age], max_age: params[:max_age] }
     new_params[:gender] = param_to_int("gender", params[:gender])
     new_params[:orientation] = param_to_int("orientation", params[:orientation])
 
     new_params
+  end
+
+  def threads
+    MessageThread.where(["user_id_1 = ? OR user_id_2 = ?", self.id, self.id])
   end
 
   def password=(word)
@@ -145,7 +137,6 @@ class User < ActiveRecord::Base
 
     return token
   end
-
 
   private
 
