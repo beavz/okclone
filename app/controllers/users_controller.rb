@@ -21,16 +21,15 @@ class UsersController < ApplicationController
 
     if @user.save
       sign_in(@user)
-      redirect_to "#{root_url}/#/users/#{@user.id}"
+      redirect_to (root_url + "#/users/#{@user.id}")
     else
-      flash[:now] = @user.errors.full_messages
       render :new
     end
   end
 
   def index
     if require_sign_in
-      @users = User.all #change this to current_user.close_users later
+      @users = User.all
 
       render :index
     end

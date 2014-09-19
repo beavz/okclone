@@ -6,8 +6,11 @@
   <h3>
     <%= user.escape("username") + " : " + user.escape("age") + " : " + user.escape("location") %>
 
-    <a href="#/threads/<%= user.id %>">SEND MESSAGE</a>
+    <% if(user.id != OKC.current_user.id) { %>
+      <a href="#/threads/<%= user.id %>">SEND MESSAGE</a>
+    <% } %>
   <h3>
+
 </header>
 
 <section class="content">

@@ -18,15 +18,18 @@ OkClone::Application.routes.draw do
       resources :albums, only: [:index, :show, :destroy] do
         resources :pictures, only: [:index, :show]
       end
+      get "/message_thread", to: "message_threads#get_or_create_by_user"
+
     end
 
-    resources :message_threads, only: [:index, :show, :create], shallow: true do
-      resources :messages, only: [:index, :create]
+    resources :message_threads, only: [:index, :show], shallow: true do
+      resources :messages, only: [:index]
     end
 
     resources :pictures, only: [:create, :destroy]
     resources :responses, only: [:create]
     resources :albums, only: [:create]
+    resources :messages, only: [:create]
 
 
     get "formatting_data", to: "users#formatting_data"

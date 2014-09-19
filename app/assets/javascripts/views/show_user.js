@@ -7,8 +7,7 @@ OKC.Views.ShowUser = Backbone.View.extend({
 
   events: {
     "click nav.tabs": "changeTab",
-    "click ul" : "renderAlbumModal",
-    "click button.message-button": "messageUser"
+    "click ul" : "renderAlbumModal"
   },
 
   partials: {

@@ -6,12 +6,18 @@ module Api
     end
 
     def show
+      @thread = current_user.threads.find(params[:id])
+      render :show
+    end
+
+    def get_or_create_by_user
       @thread = current_user.threads
-        .where(["user_id_2 = ? OR user_id_1 = ?", params[:id], params[:id]]).first
-        ##in this case, params[:id] is NOT THE THREAD ID, it is the other user's id
+        .where(["user_id_1 = ? OR user_id_2 = ?", params[:user_id], params[:user_id]]).first
       unless @thread
-        @thread = current_user.threads.create({user_id_1: current_user.id, user_id_2: params[:id]})
+        @thread = MessageThread.new(user_id_1: current_user.id, user_id_2: params[:user_id])
+        @thread.save
       end
+
       render :show
     end
 

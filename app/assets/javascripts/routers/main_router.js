@@ -59,15 +59,19 @@ OKC.Routers.Main = Backbone.Router.extend({
   },
 
   showThread: function (id) {
-    console.log("hello there human")
-    var thread = new OKC.Models.Thread({id: id});
-    console.log(thread)
-    thread.fetch() //should use get or fectch then just fetch messages?
-    var view = new OKC.Views.ShowThread({
-      model: thread
-    });
+    var that = this;
+    var url = "/api/users/" + id + "/message_thread";
 
-    this._swapView(view);
+    $.ajax({
+      url: url,
+      success: function (threadAttrs) {
+        var thread = new OKC.Models.Thread(threadAttrs)
+        var view = new OKC.Views.ShowThread({
+          model: thread
+        });
+        that._swapView(view);
+      }
+    })
   },
 
   _swapView: function (view) {

@@ -1,0 +1,8 @@
+<form class="new-message">
+  <textarea name="message[text]"></textarea>
+  <input type="submit" value="SEND">
+</form>
+
+<% _.each(thread.messages().models, function (message) { %>
+<p><%=  message.get("from_user_name") + " : " + message.escape("text") %></p>
+<% }); %>
