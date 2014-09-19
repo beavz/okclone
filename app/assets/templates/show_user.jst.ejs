@@ -5,11 +5,11 @@
 
   <h3>
     <%= user.escape("username") + " : " + user.escape("age") + " : " + user.escape("location") %>
+  </h3>
 
-    <% if(user.id != OKC.current_user.id) { %>
-      <a href="#/users/<%= user.id %>/thread">SEND MESSAGE</a>
-    <% } %>
-  <h3>
+  <% if(user.id != OKC.current_user.id) { %>
+    <a href="#/users/<%= user.id %>/thread">SEND MESSAGE</a>
+  <% } %>
 
 </header>
 
