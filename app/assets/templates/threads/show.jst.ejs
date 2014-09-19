@@ -1,8 +1,48 @@
-<form class="new-message">
-  <textarea name="message[text]"></textarea>
-  <input type="submit" value="SEND">
-</form>
+<header class="profile-header group">
+  <img
+    src="<%= thread.get("otherUserAvatar") %>"
+    id="profile-pic">
 
-<% _.each(thread.messages().models, function (message) { %>
-<p><%=  message.get("from_user_name") + " : " + message.escape("text") %></p>
-<% }); %>
+  <h3>
+    <%= thread.escape("otherUserName") + " : " + thread.escape("otherUserAge") + " : " + thread.escape("otherUserLocation") %>
+</header>
+
+<section class="content">
+  <nav class="tabs group">
+    <a>MESSAGES</a>
+    <a  href="#/users/<%= thread.get("otherUserId") %>">PROFILE</a>
+  </nav>
+
+  <div class="tab-content">
+  </div>
+
+
+
+  <% _.each(thread.messages().models, function (message) { %>
+    <article class="message group">
+      <img class="message-image" src="<%=(thread.get("otherUserId") == message.get("from_user_id") ? thread.get("otherUserAvatar") : OKC.current_user.get("avatar")) %>">
+
+      <ul class="message-box group">
+        <div class="triangle"></div>
+        <li class="message-date"><%= message.escape("created_at") %></li>
+        <li class="message-text"><%= message.escape("text") %></li>
+      </ul>
+    </article>
+  <% }); %>
+
+  <article class="message group">
+    <img
+      class="message-image"
+      src="<%= OKC.current_user.get("avatar") %>">
+
+      <div class="message-box group">
+        <div class="triangle"></div>
+        <form class="new-message">
+          <textarea name="message[text]" placeholder="Send a message!"></textarea>
+          <input type="submit" value="SEND">
+        </form>
+      </div>
+  </article>
+
+</section>
+

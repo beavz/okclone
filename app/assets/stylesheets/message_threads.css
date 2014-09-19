@@ -1,0 +1,41 @@
+a.thread {
+  background: #eee;
+  padding: 10px;
+  display: block;
+  min-height: 50px;
+  background: #eee;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+
+a.thread > img {
+  display: block;
+  float: left;
+  width: 70px;
+  border-radius: 35px;
+}
+
+a.thread > h3 {
+  display: block;
+  float: left;
+  padding: 5px 15px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+a.thread > p.last-message-date {
+  display: block;
+  float: right;
+  padding: 0;
+  font-size: 12px;
+}
+
+a.thread > p.last-message {
+  display: block;
+  float: left;
+  width: 500px;
+  font-size: 12px;
+  color: #aaa;
+  padding: 0px 15px;
+}

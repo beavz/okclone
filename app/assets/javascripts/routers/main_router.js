@@ -6,9 +6,9 @@ OKC.Routers.Main = Backbone.Router.extend({
   routes: {
     "users/:id": "showUser",
     "questions" : "newResponse",
+    "users/:id/thread": "showThread",
     "users" : "usersIndex",
-    "threads": "threadsIndex",
-    "threads/:id": "showThread"
+    "threads": "threadsIndex"
   },
 
   showUser: function (id) {
@@ -50,7 +50,7 @@ OKC.Routers.Main = Backbone.Router.extend({
   },
 
   threadsIndex: function () {
-    OKC.threads.fetch() //should use get or fectch then just fetch messages?
+    OKC.threads.fetch()
     var view = new OKC.Views.ThreadIndex({
       collection: OKC.threads
     });
@@ -65,7 +65,8 @@ OKC.Routers.Main = Backbone.Router.extend({
     $.ajax({
       url: url,
       success: function (threadAttrs) {
-        var thread = new OKC.Models.Thread(threadAttrs)
+        var thread = new OKC.Models.Thread(threadAttrs, {parse : true});
+        OKC.threads.add(thread);
         var view = new OKC.Views.ShowThread({
           model: thread
         });

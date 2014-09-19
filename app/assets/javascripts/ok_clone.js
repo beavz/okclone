@@ -20,10 +20,14 @@ window.OKC = {
 
     OKC.current_user = new OKC.Models.User({ id: user_id });
 
+    OKC.current_user.fetch({
+      success: function () {
+        OKC.mainRouter = new OKC.Routers.Main({$rootEl : $("main")});
+        Backbone.history.start();
+      }
+    });
 
-    OKC.mainRouter = new OKC.Routers.Main({$rootEl : $("main")});
-    Backbone.history.start();
-    OKC.current_user.fetch();
+
   }
 };
 

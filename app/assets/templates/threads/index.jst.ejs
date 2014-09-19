@@ -1,1 +1,23 @@
-<h1>JUST TESTING: thread index here</h1>
+<% if(threads.models.length == 0) { %>
+  You have no current conversations. Browse your matches and message someone!
+<% } %>
+<% _.each(threads.models, function (thread) { %>
+  <% if(thread.get("lastMessage")) { %>
+    <a class="thread group" href="#/users/<%= thread.get("otherUserId")%>/thread">
+      <img src="<%= thread.escape("otherUserAvatar") %>"></img>
+
+      <h3>
+        <%= thread.get("otherUserId") == thread.get("lastMessageFrom") ? "from " : "to " %>
+        <strong><%=  thread.escape("otherUserName") %></strong>
+      </h3>
+      <p class="last-message-date">
+        <%=  thread.escape("lastMessageDate") %>
+      </p>
+      <p class="last-message">
+        <%=  thread.escape("lastMessage") %>
+      </p>
+    </a>
+  <% } %>
+
+<% }); %>
+

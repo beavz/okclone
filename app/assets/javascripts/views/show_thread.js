@@ -1,6 +1,7 @@
 OKC.Views.ShowThread = Backbone.View.extend({
   initialize: function (options) {
     this.listenTo(this.model.messages(), "add", this.render);
+    this.listenTo(this.model, "sync", this.render);
   },
 
   events: {
@@ -10,7 +11,6 @@ OKC.Views.ShowThread = Backbone.View.extend({
   template: JST["threads/show"],
 
   render: function () {
-    console.log("renderin'")
     var content = this.template({
       thread: this.model,
       messages: this.model.messages()
@@ -24,7 +24,6 @@ OKC.Views.ShowThread = Backbone.View.extend({
     event.preventDefault();
     var view = this;
     var params = $(event.target).serializeJSON();
-    console.log(this.model.id)
     var message = new OKC.Models.Message({
       to_user_id: this.model.get("otherUserId"),
       thread_id: this.model.id

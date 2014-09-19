@@ -1,0 +1,65 @@
+img.message-image {
+  width: 50px;
+  margin-right: 20px;
+  border-radius: 25px;
+  float: left;
+  display: block;
+}
+
+.message-box {
+  background: #ccc;
+  float: left;
+  display: block;
+  width: 540px;
+  min-height: 40px;
+  padding: 15px;
+}
+
+article.message {
+  display: block;
+  width: 650px;
+  position: relative;
+  margin-bottom: 15px;
+  margin-left: 10px;
+}
+
+div.triangle {
+	width: 0;
+	height: 0;
+	border-left: 15px solid transparent;
+	border-right: 15px solid transparent;
+
+	border-top: 15px solid #ccc;
+  position: absolute;
+  top: 30px;
+  left: 55px;
+}
+
+li.message-text {
+  float: left;
+  display: block;
+  width: 530px;
+}
+
+li.message-date {
+  float: right;
+  display: block;
+  font-size: 10px;
+  color: #777;
+}
+
+.message-box textarea {
+  border: 0;
+  width: 530px;
+  min-height: 40px;
+  background: #eee;
+  padding: 5px;
+}
+
+.message-box input {
+  float: right;
+  font-size: 12px;
+  background: #666;
+  color: #fff;
+  padding: 2px 5px;
+}

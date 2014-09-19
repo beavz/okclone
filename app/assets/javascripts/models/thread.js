@@ -2,7 +2,6 @@ OKC.Models.Thread = Backbone.Model.extend({
   urlRoot: "/api/message_threads",
 
   initialize: function (options) {
-    this.otherUser = options.otherUser;
   },
 
   messages: function () {

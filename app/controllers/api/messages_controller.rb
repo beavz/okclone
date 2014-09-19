@@ -1,6 +1,6 @@
 module Api
   class Api::MessagesController < ApiController
-    def show 
+    def show
       @message = messages.find(params[:id])
       render :show
     end
@@ -19,7 +19,7 @@ module Api
     private
 
     def message_params
-      params.require(:message).permit(:text, :to_user_id)
+      params.require(:message).permit(:text, :to_user_id, :thread_id)
     end
   end
 end
