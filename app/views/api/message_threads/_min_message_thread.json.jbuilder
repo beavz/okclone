@@ -5,7 +5,11 @@ json.(thread, :user_id_1, :user_id_2, :id)
 
 json.otherUserId other_user.id
 json.otherUserName other_user.username
-json.otherUserAvatar other_user.avatar.image.url(:small)
+if other_user.avatar
+  json.otherUserAvatar other_user.avatar.image.url(:small)
+else
+  json.otherUserAvatar asset_path("default_avatar.jpeg")
+end
 
 if thread.messages.order(:created_at).last
   json.lastMessage last_message.text
