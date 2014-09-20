@@ -5,7 +5,7 @@ OKC.Models.Question = Backbone.Model.extend({
     this._answers = this._answers ||
       new OKC.Subsets.QuestionAnswers([], {
         question: this,
-        parentCollection: OKC.questions
+        parentCollection: OKC.answers
       });
     return this._answers;
   },
