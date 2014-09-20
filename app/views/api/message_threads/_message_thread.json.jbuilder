@@ -5,7 +5,7 @@ json.(thread, :user_id_1, :user_id_2, :id)
 json.otherUserId other_user.id
 json.otherUserName other_user.username
 if other_user.avatar
-  json.otherUserAvatar other_"user.avatar.image.url(:small)
+  json.otherUserAvatar other_user.avatar.image.url(:small)
 else
   json.otherUserAvatar asset_path("default_avatar.jpeg")
 end

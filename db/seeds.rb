@@ -1,15 +1,15 @@
 Album.create!([
-  {name: "Some pictures of me", user_id: 1},
-  {name: "Romeo & Me", user_id: 1},
-  {name: "Me", user_id: 4},
+  {name: "Some pictures of me", user_id: 6},
+  {name: "Romeo & Me", user_id: 6},
+  {name: "Me", user_id: 7},
   {name: "Hanging out by Uranus", user_id: 3},
   {name: "Me in my woodland kingdom", user_id: 3},
-  {name: "HeeHawww", user_id: 2},
-  {name: "Hangin' out", user_id: 2},
-  {name: "My pics", user_id: 5},
-  {name: "I have this thing with skulls", user_id: 6},
-  {name: "My pics", user_id: 6},
-  {name: "Love flowers and lakes", user_id: 7}
+  {name: "HeeHawww", user_id: 1},
+  {name: "Hangin' out", user_id: 1},
+  {name: "My pics", user_id: 3},
+  {name: "I have this thing with skulls", user_id: 4},
+  {name: "My pics", user_id: 4},
+  {name: "Love flowers and lakes", user_id: 5}
 ])
 Answer.create!([
   {question_id: 1, text: "It's awesome."},
