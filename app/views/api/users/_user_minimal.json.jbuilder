@@ -1,11 +1,12 @@
 json.(user,
   :id,
   :username,
-  :age,
   :zip_code,
   :gender,
   :avatar_id,
 )
+
+json.age user.birthday
 
 if user.avatar
   json.avatar user.avatar.image.url(:small)

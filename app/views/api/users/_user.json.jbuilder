@@ -1,7 +1,7 @@
 json.(user,
   :id,
+  :email,
   :username,
-  :age,
   :zip_code,
   :gender,
   :orientation,
@@ -39,8 +39,10 @@ json.(user,
   :essay7,
   :essay8,
   :avatar_id,
+  :birthday
 )
 
+json.age (user.birthday)
 json.location (("0" * (5 - user.zip_code.to_s.length)) + user.zip_code.to_s)
 
 if user.avatar

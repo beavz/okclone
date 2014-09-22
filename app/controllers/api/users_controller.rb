@@ -28,9 +28,12 @@ module Api
 
     def update
       @user = current_user
-      @user.update(user_params)
-
-      render "show"
+      if params[:confirm_password] && !(@user.has_password?(params[:confirm_password]))
+        render json: { message: "wrong password" }
+      else
+        @user.update(user_params)
+        render "show"
+      end
     end
 
     private

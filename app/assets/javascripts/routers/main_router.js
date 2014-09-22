@@ -8,7 +8,8 @@ OKC.Routers.Main = Backbone.Router.extend({
     "questions" : "newResponse",
     "users/:id/thread": "showThread",
     "users" : "usersIndex",
-    "threads": "threadsIndex"
+    "threads": "threadsIndex",
+    "settings": "editUser"
   },
 
   showUser: function (id) {
@@ -73,6 +74,14 @@ OKC.Routers.Main = Backbone.Router.extend({
         that._swapView(view);
       }
     })
+  },
+
+  editUser: function () {
+    var view = new OKC.Views.EditUser({
+      model: OKC.current_user
+    });
+
+    this._swapView(view);
   },
 
   _swapView: function (view) {

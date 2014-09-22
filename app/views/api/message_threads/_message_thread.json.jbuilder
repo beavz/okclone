@@ -9,7 +9,7 @@ if other_user.avatar
 else
   json.otherUserAvatar asset_path("default_avatar.jpeg")
 end
-json.otherUserAge other_user.age
+json.otherUserAge (other_user.birthday) ## address pls
 json.otherUserLocation other_user.zip_code
 
 

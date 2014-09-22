@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 20140915221817) do
     t.string   "password_digest",                       null: false
     t.string   "username",                              null: false
     t.string   "email",                                 null: false
-    t.integer  "age"
+    t.date     "birthday"
     t.integer  "zip_code"
     t.integer  "gender",                   default: 0
     t.integer  "orientation",              default: 0
