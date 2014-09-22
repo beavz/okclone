@@ -1,0 +1,40 @@
+<h2 class="page-title">Settings</h2>
+<div class="status-message"></div>
+<form class="edit-user">
+
+  <label>Email address</label>
+  <input
+    type="text"
+    value="<%= user.escape("email") %>"
+    name="user[email]">
+
+
+  <label>Location</label>
+    <input
+      type="text"
+      value="<%= user.get("location") %>"
+      name="user[zip_code]"
+      placeholder="zipcode">
+
+  <label>Birthday:</label>
+    <input
+      type="date"
+      value="<%= user.get("birthday") %>"
+      name="user[birthday]">
+
+  <label>Change password:</label>
+    <input
+      type="password"
+      name="user[password]"
+      placeholder="new password">
+
+  <label>Confirm changes:</label>
+    <input
+      type="password"
+      name="confirm_password"
+      placeholder="current password">
+
+
+  <input type="submit" value="SAVE CHANGES">
+
+</form>

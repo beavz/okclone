@@ -1,0 +1,20 @@
+.edit-user label, .sign-up label {
+  display: block;
+  width: 650px;
+  margin-top: 10px;
+}
+
+.edit-user input, .sign-up input {
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin: 3px 0;
+}
+
+.edit-user input[type="submit"], .sign-up input[type="submit"] {
+  border: 0;
+  color: #eee;
+  float: right;
+  background: #2768E9;
+  padding: 5px 10px;
+  margin: 10px;
+}

@@ -5,45 +5,44 @@
   </div>
 
 <main id="sign-up">
-<h2>About you:</h2>
-<br>
+
+<h2 class="page-title">Create An Account</h2>
+
 <form class="sign-up" action="<%= users_url %>" method="POST">
   <%= auth_token %>
-  <label>username:
+  <label>Username:</label>
     <input
       type="text"
       value="<%= @user.username %>"
       name="user[username]">
-  </label>
- <br>
-  <label>email:
+
+
+  <label>Email:</label>
     <input
-      type="text"
+      type="email"
       value="<%= @user.email %>"
       name="user[email]">
-  </label>
- <br>
-  <label>password:
+
+  <label>Password:<br>
     <input
       type="password"
       name="user[password]">
   </label>
- <br>
-  <label>birthday:
+
+  <label>Birthday:</label>
     <input
       type="date"
       value="<%= @user.birthday %>"
       name="user[birthday]">
-  </label>
- <br>
-  <label>location: (please enter zip code)
+
+  <label>Location:</label>
     <input
       type="text"
       value="<%= @user.zip_code %>"
-      name="user[zip_code]">
-  </label>
- <hr>
-  <button>SIGN UP</button>
+      name="user[zip_code]"
+      placeholder="zip code">
+
+  <input type="submit" value="SIGN UP">
 
 </form>
 

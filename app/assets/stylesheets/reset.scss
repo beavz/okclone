@@ -43,3 +43,13 @@ select {
   font-size: inherit;
   color: inherit;
 }
+
+.page-title {
+  font-size: 25px;
+  font-weight: 300;
+  display: block;
+  width: 635px;
+  padding: 0 5px 5px 5px;
+  border-bottom: 1px solid blue;
+  margin-bottom: 15px;
+}
