@@ -12,12 +12,14 @@
 </head>
 
 <body>
+
+<div class="logo-wrapper">
+  <img id="logo" src="<%= asset_path("heart.png") %>">
+  <h1 class="logo">OKCLONE</h1>
+</div>
+
 <% if signed_in? %>
 <nav class="top group">
-  <div class="logo-wrapper">
-    <img id="logo" src="<%= asset_path("heart.png") %>">
-    <h1 class="logo">OKCLONE</h1>
-  </div>
   <ul class="nav-wrap group">
     <li>
       <a href="/#/users/<%= current_user.id %>">PROFILE</a>

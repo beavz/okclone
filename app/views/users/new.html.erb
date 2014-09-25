@@ -1,46 +1,43 @@
-
-  <div class="logo-wrapper">
-    <img id="logo" src="<%= asset_path("heart.png") %>">
-    <h1 class="logo">OKCLONE</h1>
-  </div>
-
 <main id="sign-up">
 
 <h2 class="page-title">Create An Account</h2>
 
-<form class="sign-up" action="<%= users_url %>" method="POST">
+<form id="sign-up-form" action="<%= users_url %>" method="POST">
   <%= auth_token %>
-  <label>Username:</label>
-    <input
-      type="text"
-      value="<%= @user.username %>"
-      name="user[username]">
+  <input
+    placeholder="username"
+    type="text"
+    value="<%= @user.username %>"
+    name="user[username]">
+
+  <input
+    placeholder="email address"
+    type="email"
+    value="<%= @user.email %>"
+    name="user[email]">
 
 
-  <label>Email:</label>
-    <input
-      type="email"
-      value="<%= @user.email %>"
-      name="user[email]">
+  <input
+    placeholder="password"
+    type="password"
+    name="user[password]">
 
-  <label>Password:<br>
+  <div id="birthday-wrapper" class="group">
+    <label id="birthday-label">birthday</label>
     <input
-      type="password"
-      name="user[password]">
-  </label>
-
-  <label>Birthday:</label>
-    <input
+      id="birthday-input"
+      placeholder="birthday"
       type="date"
       value="<%= @user.birthday %>"
       name="user[birthday]">
+  </div>
 
-  <label>Location:</label>
-    <input
-      type="text"
-      value="<%= @user.zip_code %>"
-      name="user[zip_code]"
-      placeholder="zip code">
+
+  <input
+    type="text"
+    value="<%= @user.zip_code %>"
+    name="user[zip_code]"
+    placeholder="zip code">
 
   <input type="submit" value="SIGN UP">
 

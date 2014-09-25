@@ -1,25 +1,26 @@
-main#sign-up {
+main#sign-up main#sign-up {
   background: #fff;
   width: 650px;
   margin: auto;
   padding: 20px;
 }
 
-main#sign-in {
-  background: #fff;
-  width: 650px;
-  margin: auto;
-  padding: 20px;
+h5.tag-line {
 }
 
-form#sign-in {
+#sign-in-form {
   font-size: 18px;
 }
-form#sign-in button {
+#sign-in-form button {
   font-size: 20px;
   font-weight: bold;
   margin-top: 10px;
 }
+
+#demo-sign-in input {
+  display: none;
+}
+
 
 a#sign-up {
   display:block;
@@ -28,14 +29,48 @@ a#sign-up {
   padding-top: 10px;
 }
 
-
-h5 {
-  color: #000;
-  font-size: 24px;
-  display: block;
-  text-align: right;
-  margin-top: 150px;
-  margin-right: 20px;
-  width: 400px;
-  float: right;
+#sign-up-form {
+  margin: 50px;
 }
+
+#sign-in-form input {
+  width: 400px;
+  margin: 5px auto;
+  display: block;
+  text-align: center;
+  padding: 5px;
+  border: 1px solid blue;
+}
+
+#sign-in-form input[placeholder] {
+  color: blue;
+}
+
+//::-webkit-input-placeholder { /* WebKit browsers */
+//    color:    blue;
+//}
+
+#birthday-wrapper {
+  border: 1px solid blue;
+  width: 400px;
+  display: block;
+  margin: 5px auto;
+}
+
+#birthday-label {
+  float: left;
+  display: block;
+  width: 100px;
+  padding: 5px 0 5px 90px;
+}
+
+#birthday-input {
+  float: right;
+  display: block;
+  width: 200px;
+  margin: 0;
+  height: 15px;
+  border: none;
+}
+
+
