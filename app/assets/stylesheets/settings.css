@@ -4,13 +4,13 @@
   margin-top: 10px;
 }
 
-.edit-user input, .sign-up input {
+.edit-user input {
   border: 1px solid #ccc;
   padding: 5px;
   margin: 3px 0;
 }
 
-.edit-user input[type="submit"], .sign-up input[type="submit"] {
+.edit-user input[type="submit"] {
   border: 0;
   color: #eee;
   float: right;

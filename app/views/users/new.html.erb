@@ -1,0 +1,46 @@
+<main id="sign-up">
+
+<h2 class="page-title">Create An Account</h2>
+
+<form class="sign-up" action="<%= users_url %>" method="POST">
+  <%= auth_token %>
+  <input
+    placeholder="username"
+    type="text"
+    value="<%= @user.username %>"
+    name="user[username]">
+
+  <input
+    placeholder="email address"
+    type="email"
+    value="<%= @user.email %>"
+    name="user[email]">
+
+
+  <input
+    placeholder="password"
+    type="password"
+    name="user[password]">
+
+  <div id="birthday-wrapper" class="group">
+    <label id="birthday-label">birthday</label>
+    <input
+      id="birthday-input"
+      placeholder="birthday"
+      type="date"
+      value="<%= @user.birthday %>"
+      name="user[birthday]">
+  </div>
+
+
+  <input
+    type="text"
+    value="<%= @user.zip_code %>"
+    name="user[zip_code]"
+    placeholder="zip code">
+
+  <input type="submit" value="SIGN UP">
+
+</form>
+
+</main>

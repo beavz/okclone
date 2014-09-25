@@ -6,76 +6,97 @@ main#sign-up main#sign-up {
 }
 
 h5.tag-line {
+  margin: 10px;
+  display: block;
+  font-size: 18px;
+  text-align: center;
 }
 
-#sign-in-form {
-  font-size: 18px;
+form.sign-in {
+  margin-top: 50px;
 }
-#sign-in-form button {
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 10px;
+
+
+form.sign-in button, #demo-sign-in button, a#sign-up {
+  color: #eee;
+  background: #2768E9;
+  padding: 5px 10px;
+  margin: 5px auto;
+  width: 410px;
+  display: block;
+}
+
+#demo-sign-in button {
+  background: blue;
 }
 
 #demo-sign-in input {
   display: none;
 }
 
-
-a#sign-up {
-  display:block;
-  font-size: 20px;
-  font-weight: bold;
-  padding-top: 10px;
-}
-
 form.sign-up {
   margin: 50px;
 }
 
+a#sign-up {
+  text-align: center;
+  width: 390px;
+  background: #00a;
+}
+
 form.sign-up input, form.sign-in input {
+  outline: none;
   width: 400px;
   margin: 5px auto;
   display: block;
-  border: 1px solid blue;
+  border: 1px solid #ccc;
   text-align: center;
   padding: 5px;
 }
 
-#birthday-wrapper {
+form.sign-up input:focus, form.sign-in input:focus {
   border: 1px solid blue;
-  width: 400px;
+}
+
+#birthday-wrapper {
+  border: 1px solid #ccc;
+  width: 410px;
   display: block;
   margin: 5px auto;
 }
 
-form.sign-in input[placeholder] {
-  color: blue;
-  font-weight: 400;
-}
-
-form.sign-in input::-webkit-input-placeholder {
-  color: blue;
-  font-weight: 400;
+#birthday-wrapper :focus {
+  border: 1px solid blue;
 }
 
 #birthday-label {
+  border: none;
   float: left;
   display: block;
-  width: 90px;
-  padding: 5px 0 5px 90px;
-  border: 1px solid red;
+  width: 55px;
+  padding: 7px 15px 5px 120px;
   margin: 0;
 }
 
 #birthday-input {
+  border: 1px solid #fff;
   float: right;
   display: block;
   width: 200px;
   margin: 0;
-  height: 15px;
+  height: 18px;
   border: none;
-  border: 1px solid red;
+  font-family: inherit;
+  color: #bbb;
+  padding: 5px 0;
+}
+
+.sign-up input[type="submit"] {
+  width: 410px;
+  border: 0;
+  color: #eee;
+  background: #2768E9;
+  padding: 5px 10px;
 }
 
 

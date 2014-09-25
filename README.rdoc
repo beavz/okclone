@@ -5,9 +5,7 @@ a clone of the dating website okcupid.com. Ruby on Rails backend, backbone.js fr
 == TODO
 * bug w/ changing birthday
 * omniauth & restyle log in page
-* image license info in html
 * use pusher to make messages update in real time
-* make an easy demo user sign-in
 * implement "acceptable responses" in order to calculate match percentages
 * calculate, show, and sort browse results by match percentage
 * make browse & search page more user friendly - persist selections after form submission
