@@ -1,12 +1,9 @@
 OkClone::Application.routes.draw do
   get "/", to: "static_pages#main", as: :root
 
-  ##RAILS
   resource :session,  only: [:new, :create, :destroy]
-  resources :users,   only: [:new, :create, :index] #:show, :update
-  #resources :responses, only: [:new, :create, :destroy, :update]
+  resources :users,   only: [:new, :create, :index]
 
-  ##FOR BACKBONE
   namespace :api, defaults: { format: :json } do
 
     resources :users, only: [:show, :index, :update], shallow: true do

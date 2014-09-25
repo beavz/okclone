@@ -1,8 +1,0 @@
-<% current_essays.each do |essay_key| %>
-  <% if user.send( essay_key.to_sym ) %>
-    <article id="#{ essay_key }">
-      <h5><%= t( essay_key ) %></h5>
-      <p> <%= user.send( essay_key.to_sym ) %> </p>
-    </article>
-  <% end %>
-<% end %>

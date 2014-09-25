@@ -29,26 +29,18 @@ a#sign-up {
   padding-top: 10px;
 }
 
-#sign-up-form {
+form.sign-up {
   margin: 50px;
 }
 
-#sign-in-form input {
+form.sign-up input, form.sign-in input {
   width: 400px;
   margin: 5px auto;
   display: block;
+  border: 1px solid blue;
   text-align: center;
   padding: 5px;
-  border: 1px solid blue;
 }
-
-#sign-in-form input[placeholder] {
-  color: blue;
-}
-
-//::-webkit-input-placeholder { /* WebKit browsers */
-//    color:    blue;
-//}
 
 #birthday-wrapper {
   border: 1px solid blue;
@@ -57,11 +49,23 @@ a#sign-up {
   margin: 5px auto;
 }
 
+form.sign-in input[placeholder] {
+  color: blue;
+  font-weight: 400;
+}
+
+form.sign-in input::-webkit-input-placeholder {
+  color: blue;
+  font-weight: 400;
+}
+
 #birthday-label {
   float: left;
   display: block;
-  width: 100px;
+  width: 90px;
   padding: 5px 0 5px 90px;
+  border: 1px solid red;
+  margin: 0;
 }
 
 #birthday-input {
@@ -71,6 +75,7 @@ a#sign-up {
   margin: 0;
   height: 15px;
   border: none;
+  border: 1px solid red;
 }
 
 
