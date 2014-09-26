@@ -31,6 +31,33 @@ module Api
       render :show
     end
 
+    def set_acceptable_responses
+      question_id = Answer.find(response_params[:answer_id]).question_id
+
+      existing_acceptables = AcceptableResponse.find_by_sql([<<-SQL, question_id, current_user.id])
+        SELECT acceptable_responses.*
+        FROM acceptable_responses
+        WHERE acceptable_responses.answer_id IN (
+          SELECT answers.id
+          FROM answers
+          WHERE question_id = ?
+        ) AND acceptable_responses.user_id = ?
+      SQL
+
+      unless existing_acceptables.empty?
+        existing_acceptables.each { |item| item.destroy }
+      end
+
+      params[:acceptable_answers].each do |answer_id|
+        AcceptableResponse.create({
+          user_id: current_user.id,
+          answer_id: answer_id
+        })
+      end
+
+      render json: "ok"
+    end
+
     private
 
     def response_params

@@ -1,18 +1,32 @@
 <h2 class="page-title">Questions</h2>
 
-<article class="question group">
+<article class="question">
+  <h4 class="message"></h4>
   <h3><%= question.escape("text") %></h3>
-
-  <form>
-    <% _.each( question.answers().models, function (answer) { %>
-      <input
-        type="radio"
-        name="response[answer_id]"
-        value="<%= answer.id %>">
-
-      <label><%= answer.escape("text") %></label>
-      <br>
-    <% }) %>
+  <h6 id="your-answer">Your answer:</h6>
+  <h6 id="acceptable-answers">Acceptable answers:</h6>
+  <form class="new-response group">
+    <div class="response-form-column" id="your-answer">
+      <% _.each( question.answers().models, function (answer) { %>
+        <input
+          type="radio"
+          name="response[answer_id]"
+          value="<%= answer.id %>">
+      <% }) %>
+    </div>
+    <div class="response-form-column" id="acceptable-answers">
+      <% _.each( question.answers().models, function (answer) { %>
+        <input
+          type="checkbox"
+          name="acceptable_answers[]"
+          value="<%= answer.id %>">
+        <% }) %>
+    </div>
+    <div class="response-form-column" id="answer-text">
+      <% _.each( question.answers().models, function (answer) { %>
+        <label><%= answer.escape("text") %></label>
+      <% }) %>
+    </div>
 
     <h4>explain:</h4>
     <textarea class="explain" name="response[explanation]"></textarea>

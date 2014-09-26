@@ -29,7 +29,9 @@ OkClone::Application.routes.draw do
     resources :messages, only: [:create]
 
 
+
     get "formatting_data", to: "users#formatting_data"
+    get "acceptable_responses", to: "responses#set_acceptable_responses"
   end
 
 

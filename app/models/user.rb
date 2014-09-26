@@ -110,6 +110,26 @@ class User < ActiveRecord::Base
     new_params
   end
 
+  def get_match_percentage(other_user)
+    num = Response.find_by_sql([<<-SQL, self.id, other_user.id]).length
+      SELECT responses.*
+      FROM responses
+        INNER JOIN acceptable_responses
+        ON responses.answer_id = acceptable_responses.answer_id
+      WHERE responses.user_id = ? AND acceptable_responses.user_id = ?
+    SQL
+
+    denom = Response.find_by_sql([<<-SQL, self.id, other_user.id]).length
+      SELECT responses.*
+      FROM responses
+        INNER JOIN responses AS other_responses
+        ON responses.answer_id = other_responses.answer_id
+      WHERE responses.user_id = ? AND other_responses.user_id = ?
+    SQL
+
+    num/denom
+  end
+
   def threads
     MessageThread.where(["user_id_1 = ? OR user_id_2 = ?", self.id, self.id])
   end

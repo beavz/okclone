@@ -1,0 +1,37 @@
+.response-form-column {
+  float: left;
+  display: block;
+}
+
+#your-answer {
+  width: 10px;
+  padding: 0 20px;
+}
+
+#acceptable-answers {
+  width: 10px;
+  padding: 0 5px 0 35px;
+}
+
+#answer-text {
+  width: 550px;
+}
+
+#answer-text > label {
+  display: block;
+  padding-left: 10px;
+}
+
+h6#your-answer, h6#acceptable-answers {
+  display:block;
+  float: left;
+  margin: 0;
+  padding: 0 0 5px 0;
+  width: 50px;
+}
+
+h6#acceptable-answers {
+  width: 50px;
+  padding: 0 550px 5px 0px;
+}
+

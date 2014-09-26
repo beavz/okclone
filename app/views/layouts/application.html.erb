@@ -18,8 +18,9 @@
   <h1 class="logo">OKCLONE</h1>
 </div>
 
-<% if signed_in? %>
+
 <nav class="top group">
+  <% if signed_in? %>
   <ul class="nav-wrap group">
     <li>
       <a href="/#/users/<%= current_user.id %>">PROFILE</a>
@@ -45,9 +46,8 @@
   <a href="<%= root_url + "#/questions" %>">QUESTIONS</a>
   <a href="<%= root_url + "#/threads" %>">MESSAGES</a>
 
-</nav>
-
 <% end %>
+</nav>
 
 <%= yield %>
 

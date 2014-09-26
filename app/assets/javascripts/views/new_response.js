@@ -14,6 +14,7 @@ OKC.Views.NewResponse = Backbone.View.extend({
     if (this.model) {
       var content = this.template({
         question: this.model,
+        message: this.message
       });
       this.$el.html(content);
     } else {
@@ -26,14 +27,24 @@ OKC.Views.NewResponse = Backbone.View.extend({
     event.preventDefault();
     var view = this;
     var params = $(event.currentTarget).serializeJSON();
-    var response = new OKC.Models.Response();
-    response.save(params.response, {
-      success: function (response) {
-        view.collection.remove(view.model);
-        view.model = _.first(view.collection.models);
-        view.render();
-      }
-    });
+    if (!(params["acceptable_answers"])) {
+      $(view.$el).find(".message").html("You must choose at least one acceptable answer.");
+
+    } else {
+      var response = new OKC.Models.Response();
+      response.save(params.response, {
+        success: function (response) {
+          view.collection.remove(view.model);
+          view.model = _.first(view.collection.models);
+          view.render();
+        }
+      });
+
+      $.ajax({
+        url: "/api/acceptable_responses",
+        data: params
+      })
+    }
 
   }
 
