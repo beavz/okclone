@@ -54,4 +54,4 @@ end
 json.responses user.responses, partial: "api/responses/response", as: :response
 json.albums user.albums, partial: "api/albums/album", as: :album
 
-json.match = user.get_match_percentage(current_user) + current_user.get_match_percentage(user) / 2
+json.match user.get_match_percentage(current_user) * 100

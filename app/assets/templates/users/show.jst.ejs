@@ -4,7 +4,7 @@
     id="profile-pic">
 
   <h3>
-    <%= user.escape("username") + " : " + user.escape("age") + " : " + user.escape("location") %>
+    <%= user.escape("username") + " : " + user.get("match") %>%
   </h3>
 
   <% if(user.id != OKC.current_user.id) { %>
