@@ -25,12 +25,12 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
   },
 
   partials: {
-    ".info" : "current_user_info",
-    ".photos" : "current_user_photos",
-    ".questions" : "current_user_questions"
+    ".info" : "users/_info_editable",
+    ".photos" : "users/_photos_editable",
+    ".questions" : "users/_questions_editable"
   },
 
-  template: JST["show_user"],
+  template: JST["users/show"],
 
   render: function () {
     var content = this.template({
@@ -182,11 +182,8 @@ OKC.Views.ShowCurrentUser = Backbone.View.extend({
   },
 
   renderAlbumModal: function (event) {
-    console.log("hi from the view")
-    var template = JST["album_modal"];
-
+    var template = JST["users/_album_modal"];
     var albumId = $(event.currentTarget).data().id;
-    console.log(this.model.albums().get(albumId).pictures())
     var content = template({ album: this.model.albums().get(albumId) })
     $('ul.pictures').html(content);
   }

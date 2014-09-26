@@ -11,12 +11,12 @@ OKC.Views.ShowUser = Backbone.View.extend({
   },
 
   partials: {
-    ".info" : "user_info",
-    ".photos" : "user_photos",
-    ".questions" : "user_questions"
+    ".info" : "users/_info",
+    ".photos" : "users/_photos",
+    ".questions" : "users/_questions"
   },
 
-  template: JST["show_user"],
+  template: JST["users/show"],
 
   render: function () {
     var content = this.template({
@@ -41,7 +41,7 @@ OKC.Views.ShowUser = Backbone.View.extend({
   },
 
   renderAlbumModal: function (event) {
-    var template = JST["album_modal"];
+    var template = JST["users/_album_modal"];
 
     var albumId = $(event.currentTarget).data().id;
     console.log(this.model.albums().get(albumId).pictures())
