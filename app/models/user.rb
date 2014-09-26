@@ -127,7 +127,11 @@ class User < ActiveRecord::Base
       WHERE responses.user_id = ? AND other_responses.user_id = ?
     SQL
 
-    num/denom
+    if denom == 0
+      return 0
+    else
+      return num/denom
+    end
   end
 
   def threads
